@@ -7,7 +7,7 @@
 	<artifactId>sample-integration-android</artifactId>
 	<packaging>apk</packaging>
 	<version>1.0</version>
-	<name>Sample for Bitcoin Integration for Android</name>
+	<name>Sample for Rimbit Integration for Android</name>
 
 	<parent>
 		<groupId>de.schildbach.wallet</groupId>
@@ -40,11 +40,19 @@
 			<version>2.0</version>
 		</dependency>
 
-		<!-- com.google.bitcoin.* -->
+		<!-- com.rimbit.rimbit.* -->
 		<dependency>
-			<groupId>com.google</groupId>
-			<artifactId>bitcoinj</artifactId>
-			<version>0.11.1</version>
+			<groupId>com.rimbit</groupId>
+			<artifactId>rimbitj</artifactId>
+			<version>0.11.3</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../../rimbitj/core/target/rimbitj-0.11.3.jar</systemPath>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.google.protobuf</groupId>
+		    <artifactId>protobuf-java</artifactId>
+		    <version>2.5.0</version>
 		</dependency>
 
 	</dependencies>

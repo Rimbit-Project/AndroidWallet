@@ -24,16 +24,16 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos;
+import org.rimbit.protocols.payments.Protos;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ScriptException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.protocols.payments.PaymentRequestException;
-import com.google.bitcoin.protocols.payments.PaymentSession;
-import com.google.bitcoin.protocols.payments.PaymentSession.PkiVerificationData;
-import com.google.bitcoin.script.Script;
-import com.google.bitcoin.script.ScriptBuilder;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ScriptException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.protocols.payments.PaymentRequestException;
+import com.rimbit.rimbit.protocols.payments.PaymentSession;
+import com.rimbit.rimbit.protocols.payments.PaymentSession.PkiVerificationData;
+import com.rimbit.rimbit.script.Script;
+import com.rimbit.rimbit.script.ScriptBuilder;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.UninitializedMessageException;
@@ -46,9 +46,9 @@ import de.schildbach.wallet.data.PaymentIntent;
  */
 public final class PaymentProtocol
 {
-	public static final String MIMETYPE_PAYMENTREQUEST = "application/bitcoin-paymentrequest"; // BIP 71
-	public static final String MIMETYPE_PAYMENT = "application/bitcoin-payment"; // BIP 71
-	public static final String MIMETYPE_PAYMENTACK = "application/bitcoin-paymentack"; // BIP 71
+	public static final String MIMETYPE_PAYMENTREQUEST = "application/rimbit-paymentrequest"; // BIP 71
+	public static final String MIMETYPE_PAYMENT = "application/rimbit-payment"; // BIP 71
+	public static final String MIMETYPE_PAYMENTACK = "application/rimbit-paymentack"; // BIP 71
 
 	public static Protos.PaymentRequest createPaymentRequest(final BigInteger amount, @Nonnull final Address toAddress, final String memo,
 			final String paymentUrl)
@@ -162,7 +162,7 @@ public final class PaymentProtocol
 	{
 		final Protos.Payment.Builder builder = Protos.Payment.newBuilder();
 
-		builder.addTransactions(ByteString.copyFrom(transaction.unsafeBitcoinSerialize()));
+		builder.addTransactions(ByteString.copyFrom(transaction.unsafeRimbitSerialize()));
 
 		if (refundAddress != null)
 		{

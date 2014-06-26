@@ -43,7 +43,7 @@ import java.util.TimeZone;
 
 import javax.annotation.Nonnull;
 
-import org.bitcoinj.wallet.Protos;
+import org.rimbitj.wallet.Protos;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -73,13 +73,13 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
-import com.google.bitcoin.store.UnreadableWalletException;
-import com.google.bitcoin.store.WalletProtobufSerializer;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
+import com.rimbit.rimbit.store.UnreadableWalletException;
+import com.rimbit.rimbit.store.WalletProtobufSerializer;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;

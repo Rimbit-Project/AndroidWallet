@@ -23,7 +23,7 @@ import java.math.BigInteger;
 
 import org.junit.Test;
 
-import com.google.bitcoin.core.NetworkParameters;
+import com.rimbit.rimbit.core.NetworkParameters;
 
 /**
  * @author Andreas Schildbach
@@ -57,7 +57,7 @@ public class GenericUtilsTest
 	}
 
 	@Test
-	public void formatMbtcValue() throws Exception
+	public void formatMRBTValue() throws Exception
 	{
 		final BigInteger coin = new BigInteger("100000000");
 		assertEquals("1000.00", GenericUtils.formatValue(coin, 2, 3));
@@ -79,7 +79,7 @@ public class GenericUtilsTest
 	}
 
 	@Test
-	public void formatUbtcValue() throws Exception
+	public void formatURBTValue() throws Exception
 	{
 		final BigInteger coin = new BigInteger("100000000");
 		assertEquals("1000000", GenericUtils.formatValue(coin, 0, 6));

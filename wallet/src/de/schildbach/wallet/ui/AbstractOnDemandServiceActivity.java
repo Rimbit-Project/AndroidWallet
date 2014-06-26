@@ -19,9 +19,9 @@ package de.schildbach.wallet.ui;
 
 import javax.annotation.Nonnull;
 
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.VerificationException;
-import com.google.bitcoin.core.Wallet;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.VerificationException;
+import com.rimbit.rimbit.core.Wallet;
 
 import de.schildbach.wallet.WalletApplication;
 

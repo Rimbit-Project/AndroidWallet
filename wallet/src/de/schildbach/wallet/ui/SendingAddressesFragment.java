@@ -44,10 +44,10 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.uri.BitcoinURI;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.uri.RimbitURI;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Constants;
@@ -343,7 +343,7 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 
 	private void handleShowQr(final String address)
 	{
-		final String uri = BitcoinURI.convertToBitcoinURI(address, null, null, null);
+		final String uri = RimbitURI.convertToRimbitURI(address, null, null, null);
 		final int size = (int) (256 * getResources().getDisplayMetrics().density);
 		BitmapFragment.show(getFragmentManager(), Qr.bitmap(uri, size));
 	}
@@ -360,7 +360,7 @@ public final class SendingAddressesFragment extends SherlockListFragment impleme
 		final Uri uri = AddressBookProvider.contentUri(activity.getPackageName());
 		return new CursorLoader(activity, uri, null, AddressBookProvider.SELECTION_NOTIN,
 				new String[] { walletAddressesSelection != null ? walletAddressesSelection : "" }, AddressBookProvider.KEY_LABEL
-						+ " COLLATE LOCALIZED ASC");
+						+ " COLRBTE LOCALIZED ASC");
 	}
 
 	@Override

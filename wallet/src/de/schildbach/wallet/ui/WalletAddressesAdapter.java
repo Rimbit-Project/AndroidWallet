@@ -34,9 +34,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Wallet;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.Wallet;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Constants;

@@ -7,10 +7,10 @@
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
 	<version>3.50-test</version>
-	<name>Bitcoin Wallet</name>
+	<name>Rimbit Wallet</name>
 
 	<parent>
-		<groupId>de.schildbach.wallet</groupId>
+		<groupId>com.rimbit.wallet</groupId>
 		<artifactId>base</artifactId>
 		<version>1</version>
 	</parent>
@@ -49,26 +49,22 @@
 			<version>r7</version>
 		</dependency>
 
-		<!-- com.actionbarsherlock.* -->
+		<!-- com.rimbit.rimbitj.* -->
 		<dependency>
-			<groupId>com.actionbarsherlock</groupId>
-			<artifactId>library</artifactId>
-			<version>4.1.0</version>
-			<type>apklib</type>
-		</dependency>
-
-		<!-- com.google.bitcoin.* -->
-		<dependency>
-			<groupId>com.google</groupId>
-			<artifactId>bitcoinj</artifactId>
+			<groupId>com.rimbit</groupId>
+			<artifactId>rimbitj</artifactId>
 			<version>0.11.3</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../../rimbitj/core/target/rimbitj-0.11.3.jar</systemPath>
 		</dependency>
 
 		<!-- de.schildbach.wallet.integration.android.* -->
 		<dependency>
-			<groupId>de.schildbach.wallet</groupId>
+			<groupId>com.rimbit.wallet</groupId>
 			<artifactId>integration-android</artifactId>
 			<version>2.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../integration-android/target/integration-android-2.0.jar</systemPath>
 		</dependency>
 
 		<!-- com.google.protobuf.* -->
@@ -126,6 +122,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.madgag</groupId>
+		    <artifactId>sc-light-jdk15on</artifactId>
+		    <version>1.47.0.2</version>
 		</dependency>
 
 	</dependencies>
@@ -216,7 +218,7 @@
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>2.5.2</version>
 				<configuration>
-					<onlyAnalyze>de.schildbach.wallet.-</onlyAnalyze>
+					<onlyAnalyze>com.rimbit.wallet.-</onlyAnalyze>
 				</configuration>
 			</plugin>
 		</plugins>

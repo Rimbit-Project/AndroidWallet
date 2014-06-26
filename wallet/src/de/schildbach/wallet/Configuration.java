@@ -39,7 +39,7 @@ public class Configuration
 
 	private final SharedPreferences prefs;
 
-	public static final String PREFS_KEY_BTC_PRECISION = "btc_precision";
+	public static final String PREFS_KEY_RBT_PRECISION = "rbt_precision";
 	public static final String PREFS_KEY_CONNECTIVITY_NOTIFICATION = "connectivity_notification";
 	public static final String PREFS_KEY_EXCHANGE_CURRENCY = "exchange_currency";
 	public static final String PREFS_KEY_TRUSTED_PEER = "trusted_peer";
@@ -57,8 +57,8 @@ public class Configuration
 	private static final String PREFS_KEY_CHANGE_LOG_VERSION = "change_log_version";
 	public static final String PREFS_KEY_REMIND_BACKUP = "remind_backup";
 
-	private static final int PREFS_DEFAULT_BTC_SHIFT = 3;
-	private static final int PREFS_DEFAULT_BTC_PRECISION = 2;
+	private static final int PREFS_DEFAULT_RBT_SHIFT = 3;
+	private static final int PREFS_DEFAULT_RBT_PRECISION = 2;
 
 	private static final Logger log = LoggerFactory.getLogger(Configuration.class);
 
@@ -69,51 +69,51 @@ public class Configuration
 		this.lastVersionCode = prefs.getInt(PREFS_KEY_LAST_VERSION, 0);
 	}
 
-	public boolean hasBtcPrecision()
+	public boolean hasRBTPrecision()
 	{
-		return prefs.contains(PREFS_KEY_BTC_PRECISION);
+		return prefs.contains(PREFS_KEY_RBT_PRECISION);
 	}
 
-	public int getBtcPrecision()
+	public int getRBTPrecision()
 	{
-		final String precision = prefs.getString(PREFS_KEY_BTC_PRECISION, null);
+		final String precision = prefs.getString(PREFS_KEY_RBT_PRECISION, null);
 		if (precision != null)
 			return precision.charAt(0) - '0';
 		else
-			return PREFS_DEFAULT_BTC_PRECISION;
+			return PREFS_DEFAULT_RBT_PRECISION;
 	}
 
-	public int getBtcMaxPrecision()
+	public int getRBTMaxPrecision()
 	{
-		final int btcShift = getBtcShift();
+		final int RBTShift = getRBTShift();
 
-		if (btcShift == 0)
-			return Constants.BTC_MAX_PRECISION;
-		else if (btcShift == 3)
-			return Constants.MBTC_MAX_PRECISION;
+		if (RBTShift == 0)
+			return Constants.RBT_MAX_PRECISION;
+		else if (RBTShift == 3)
+			return Constants.MRBT_MAX_PRECISION;
 		else
-			return Constants.UBTC_MAX_PRECISION;
+			return Constants.URBT_MAX_PRECISION;
 	}
 
-	public int getBtcShift()
+	public int getRBTShift()
 	{
-		final String precision = prefs.getString(PREFS_KEY_BTC_PRECISION, null);
+		final String precision = prefs.getString(PREFS_KEY_RBT_PRECISION, null);
 		if (precision != null)
 			return precision.length() == 3 ? precision.charAt(2) - '0' : 0;
 		else
-			return PREFS_DEFAULT_BTC_SHIFT;
+			return PREFS_DEFAULT_RBT_SHIFT;
 	}
 
-	public String getBtcPrefix()
+	public String getRBTPrefix()
 	{
-		final int btcShift = getBtcShift();
+		final int RBTShift = getRBTShift();
 
-		if (btcShift == 0)
-			return Constants.CURRENCY_CODE_BTC;
-		else if (btcShift == 3)
-			return Constants.CURRENCY_CODE_MBTC;
+		if (RBTShift == 0)
+			return Constants.CURRENCY_CODE_RBT;
+		else if (RBTShift == 3)
+			return Constants.CURRENCY_CODE_MRBT;
 		else
-			return Constants.CURRENCY_CODE_UBTC;
+			return Constants.CURRENCY_CODE_URBT;
 	}
 
 	public boolean getConnectivityNotificationEnabled()

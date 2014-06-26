@@ -47,18 +47,18 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TypefaceSpan;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.DumpedPrivateKey;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.ScriptException;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.TransactionInput;
-import com.google.bitcoin.core.TransactionOutput;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.script.Script;
-import com.google.bitcoin.store.WalletProtobufSerializer;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.DumpedPrivateKey;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.ScriptException;
+import com.rimbit.rimbit.core.Sha256Hash;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.TransactionInput;
+import com.rimbit.rimbit.core.TransactionOutput;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.script.Script;
+import com.rimbit.rimbit.store.WalletProtobufSerializer;
 
 import de.schildbach.wallet.Constants;
 
@@ -134,14 +134,14 @@ public class WalletUtils
 		}
 	}
 
-	public static BigInteger localValue(@Nonnull final BigInteger btcValue, @Nonnull final BigInteger rate)
+	public static BigInteger localValue(@Nonnull final BigInteger RBTValue, @Nonnull final BigInteger rate)
 	{
-		return btcValue.multiply(rate).divide(GenericUtils.ONE_BTC);
+		return RBTValue.multiply(rate).divide(GenericUtils.ONE_RBT);
 	}
 
-	public static BigInteger btcValue(@Nonnull final BigInteger localValue, @Nonnull final BigInteger rate)
+	public static BigInteger RBTValue(@Nonnull final BigInteger localValue, @Nonnull final BigInteger rate)
 	{
-		return localValue.multiply(GenericUtils.ONE_BTC).divide(rate);
+		return localValue.multiply(GenericUtils.ONE_RBT).divide(rate);
 	}
 
 	@CheckForNull
@@ -212,7 +212,7 @@ public class WalletUtils
 	{
 		final DateFormat format = Iso8601Format.newDateTimeFormatT();
 
-		out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your Bitcoins.\n");
+		out.write("# KEEP YOUR PRIVATE KEYS SAFE! Anyone who can read this can spend your Rimbits.\n");
 
 		for (final ECKey key : keys)
 		{

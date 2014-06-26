@@ -26,7 +26,7 @@ import android.preference.PreferenceScreen;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.VersionMessage;
+import com.rimbit.rimbit.core.VersionMessage;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.WalletApplication;
@@ -45,7 +45,7 @@ public final class AboutActivity extends SherlockPreferenceActivity
 	private static final String KEY_ABOUT_AUTHOR_TWITTER = "about_author_twitter";
 	private static final String KEY_ABOUT_AUTHOR_GOOGLEPLUS = "about_author_googleplus";
 	private static final String KEY_ABOUT_MARKET_PUBLISHER = "about_market_publisher";
-	private static final String KEY_ABOUT_CREDITS_BITCOINJ = "about_credits_bitcoinj";
+	private static final String KEY_ABOUT_CREDITS_RimbitJ = "about_credits_rimbitj";
 	private static final String KEY_ABOUT_CREDITS_ZXING = "about_credits_zxing";
 	private static final String KEY_ABOUT_CREDITS_ICON = "about_credits_icon";
 
@@ -63,8 +63,8 @@ public final class AboutActivity extends SherlockPreferenceActivity
 		findPreference(KEY_ABOUT_LICENSE).setSummary(Constants.LICENSE_URL);
 		findPreference(KEY_ABOUT_SOURCE).setSummary(Constants.SOURCE_URL);
 		findPreference(KEY_ABOUT_MARKET_PUBLISHER).setSummary(Constants.MARKET_PUBLISHER_URL);
-		findPreference(KEY_ABOUT_CREDITS_BITCOINJ).setTitle(getString(R.string.about_credits_bitcoinj_title, VersionMessage.BITCOINJ_VERSION));
-		findPreference(KEY_ABOUT_CREDITS_BITCOINJ).setSummary(Constants.CREDITS_BITCOINJ_URL);
+		findPreference(KEY_ABOUT_CREDITS_RimbitJ).setTitle(getString(R.string.about_credits_rimbitj_title, VersionMessage.RimbitJ_VERSION));
+		findPreference(KEY_ABOUT_CREDITS_RimbitJ).setSummary(Constants.CREDITS_RimbitJ_URL);
 		findPreference(KEY_ABOUT_CREDITS_ZXING).setSummary(Constants.CREDITS_ZXING_URL);
 		findPreference(KEY_ABOUT_CREDITS_ICON).setSummary(Constants.CREDITS_ICON_URL);
 	}
@@ -125,9 +125,9 @@ public final class AboutActivity extends SherlockPreferenceActivity
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.MARKET_PUBLISHER_URL)));
 			finish();
 		}
-		else if (KEY_ABOUT_CREDITS_BITCOINJ.equals(key))
+		else if (KEY_ABOUT_CREDITS_RimbitJ.equals(key))
 		{
-			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CREDITS_BITCOINJ_URL)));
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CREDITS_RimbitJ_URL)));
 			finish();
 		}
 		else if (KEY_ABOUT_CREDITS_ZXING.equals(key))

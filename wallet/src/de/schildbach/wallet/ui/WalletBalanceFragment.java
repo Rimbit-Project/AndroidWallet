@@ -41,7 +41,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.Wallet;
+import com.rimbit.rimbit.core.Wallet;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -64,7 +64,7 @@ public final class WalletBalanceFragment extends Fragment
 	private LoaderManager loaderManager;
 
 	private View viewBalance;
-	private CurrencyTextView viewBalanceBtc;
+	private CurrencyTextView viewBalanceRBT;
 	private FrameLayout viewBalanceLocalFrame;
 	private CurrencyTextView viewBalanceLocal;
 	private TextView viewProgress;
@@ -128,7 +128,7 @@ public final class WalletBalanceFragment extends Fragment
 			viewBalance.setEnabled(false);
 		}
 
-		viewBalanceBtc = (CurrencyTextView) view.findViewById(R.id.wallet_balance_btc);
+		viewBalanceRBT = (CurrencyTextView) view.findViewById(R.id.wallet_balance_rbt);
 
 		viewBalanceLocalFrame = (FrameLayout) view.findViewById(R.id.wallet_balance_local_frame);
 		if (showExchangeRatesOption)
@@ -219,10 +219,10 @@ public final class WalletBalanceFragment extends Fragment
 
 			if (balance != null)
 			{
-				viewBalanceBtc.setVisibility(View.VISIBLE);
-				viewBalanceBtc.setPrecision(config.getBtcPrecision(), config.getBtcShift());
-				viewBalanceBtc.setPrefix(config.getBtcPrefix());
-				viewBalanceBtc.setAmount(balance);
+				viewBalanceRBT.setVisibility(View.VISIBLE);
+				viewBalanceRBT.setPrecision(config.getRBTPrecision(), config.getRBTShift());
+				viewBalanceRBT.setPrefix(config.getRBTPrefix());
+				viewBalanceRBT.setAmount(balance);
 
 				if (showLocalBalance)
 				{
@@ -242,7 +242,7 @@ public final class WalletBalanceFragment extends Fragment
 			}
 			else
 			{
-				viewBalanceBtc.setVisibility(View.INVISIBLE);
+				viewBalanceRBT.setVisibility(View.INVISIBLE);
 			}
 
 			viewProgress.setVisibility(View.GONE);

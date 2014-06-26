@@ -42,7 +42,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.Transaction;
+import com.rimbit.rimbit.core.Transaction;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.GenericUtils;
@@ -131,15 +131,15 @@ public final class CurrencyAmountView extends FrameLayout
 
 	public void setCurrencySymbol(@Nullable final String currencyCode)
 	{
-		if (Constants.CURRENCY_CODE_BTC.equals(currencyCode))
+		if (Constants.CURRENCY_CODE_RBT.equals(currencyCode))
 		{
 			currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_btc);
 		}
-		else if (Constants.CURRENCY_CODE_MBTC.equals(currencyCode))
+		else if (Constants.CURRENCY_CODE_MRBT.equals(currencyCode))
 		{
 			currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_mbtc);
 		}
-		else if (Constants.CURRENCY_CODE_UBTC.equals(currencyCode))
+		else if (Constants.CURRENCY_CODE_URBT.equals(currencyCode))
 		{
 			currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_ubtc);
 		}

@@ -2,11 +2,11 @@
 <resources>
 
 	<string-array name="preferences_precision_labels">
-		<item>BTC, 8 décimales</item>
-		<item>BTC, 6 décimales</item>
-		<item>BTC, 4 décimales</item>
-		<item>mBTC, 2 décimales</item>
-		<item>µBTC, 0 décimale</item>
+		<item>RBT, 8 décimales</item>
+		<item>RBT, 6 décimales</item>
+		<item>RBT, 4 décimales</item>
+		<item>mRBT, 2 décimales</item>
+		<item>µRBT, 0 décimale</item>
 	</string-array>
 
 </resources>

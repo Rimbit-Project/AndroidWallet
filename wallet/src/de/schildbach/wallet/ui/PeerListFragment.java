@@ -50,8 +50,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.google.bitcoin.core.Peer;
-import com.google.bitcoin.core.VersionMessage;
+import com.rimbit.rimbit.core.Peer;
+import com.rimbit.rimbit.core.VersionMessage;
 
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.service.BlockchainServiceImpl;

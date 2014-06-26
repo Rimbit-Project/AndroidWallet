@@ -27,14 +27,14 @@ import javax.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet.SendRequest;
-import com.google.bitcoin.core.WrongNetworkException;
-import com.google.bitcoin.script.Script;
-import com.google.bitcoin.script.ScriptBuilder;
-import com.google.bitcoin.uri.BitcoinURI;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Wallet.SendRequest;
+import com.rimbit.rimbit.core.WrongNetworkException;
+import com.rimbit.rimbit.script.Script;
+import com.rimbit.rimbit.script.ScriptBuilder;
+import com.rimbit.rimbit.uri.RimbitURI;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.Bluetooth;
@@ -194,13 +194,13 @@ public final class PaymentIntent implements Parcelable
 		return new PaymentIntent(new Address(Constants.NETWORK_PARAMETERS, address), addressLabel);
 	}
 
-	public static PaymentIntent fromBitcoinUri(@Nonnull final BitcoinURI bitcoinUri)
+	public static PaymentIntent fromRimbitUri(@Nonnull final RimbitURI rimbitUri)
 	{
-		final Output[] outputs = buildSimplePayTo(bitcoinUri.getAmount(), bitcoinUri.getAddress());
-		final String bluetoothMac = (String) bitcoinUri.getParameterByName(Bluetooth.MAC_URI_PARAM);
+		final Output[] outputs = buildSimplePayTo(rimbitUri.getAmount(), rimbitUri.getAddress());
+		final String bluetoothMac = (String) rimbitUri.getParameterByName(Bluetooth.MAC_URI_PARAM);
 
-		return new PaymentIntent(PaymentIntent.Standard.BIP21, null, null, null, outputs, bitcoinUri.getLabel(), bluetoothMac != null ? "bt:"
-				+ bluetoothMac : null, null, bitcoinUri.getPaymentRequestUrl());
+		return new PaymentIntent(PaymentIntent.Standard.BIP21, null, null, null, outputs, rimbitUri.getLabel(), bluetoothMac != null ? "bt:"
+				+ bluetoothMac : null, null, rimbitUri.getPaymentRequestUrl());
 	}
 
 	public PaymentIntent mergeWithEditedValues(@Nullable final BigInteger editedAmount, @Nullable final Address editedAddress)

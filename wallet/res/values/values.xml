@@ -14,11 +14,11 @@
 		<item>0/6</item>
 	</string-array>
 	<string-array name="preferences_precision_labels">
-		<item>BTC, 8 digits</item>
-		<item>BTC, 6 digits</item>
-		<item>BTC, 4 digits</item>
-		<item>mBTC, 2 digits</item>
-		<item>µBTC, no digits</item>
+		<item>RBT, 8 digits</item>
+		<item>RBT, 6 digits</item>
+		<item>RBT, 4 digits</item>
+		<item>mRBT, 2 digits</item>
+		<item>µRBT, no digits</item>
 	</string-array>
 
 </resources>

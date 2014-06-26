@@ -3,7 +3,7 @@ v3.50
 * Update Chinese, Danish, Italian and Japanese translations.
 * Update QR-code scanner to ZXing 3.1.0.
 * Small bugfixes.
-* Based on bitcoinj 0.11.3.
+* Based on rimbitj 0.11.3.
 
 v3.49
 
@@ -29,9 +29,9 @@ v3.46
 
 * New translation into Slovenian.
 * Update Hebrew translation.
-* Fix missing transactions due to once dusty outputs which are standard as of Bitcoin Core 0.9.
+* Fix missing transactions due to once dusty outputs which are standard as of Rimbit Core 0.9.
 * Preparation for fetching payment requests via Bluetooth.
-* Based on bitcoinj 0.11.2.
+* Based on rimbitj 0.11.2.
 
 v3.44-v3.45
 
@@ -47,7 +47,7 @@ v3.41-v3.43
 
 v3.40
 
-* Support for µBTC denomination, for people who are used to low valued currencies.
+* Support for µRBT denomination, for people who are used to low valued currencies.
 * Always use BIP70 when sending payments directly via Bluetooth.
 * Small bugfixes.
 
@@ -73,7 +73,7 @@ v3.35
 
 * Protect wallet against dust spam.
 * Fixed some bugs in the payment protocol.
-* Based on bitcoinj 0.11.1.
+* Based on rimbitj 0.11.1.
 
 v3.34
 
@@ -89,13 +89,13 @@ v3.32
 
 v3.31
 
-* Default denomination has changed to millibitcoin (mBTC).
-* Cross-calculated exchange rates for currencies without Bitcoin volume. Thanks to BitcoinAverage.
+* Default denomination has changed to millirimbit (mRBT).
+* Cross-calculated exchange rates for currencies without Rimbit volume. Thanks to RimbitAverage.
 * Better handling of errors when sending coins, specifically when funds are exceeded.
 * Labs: Uses BIP70 payment protocol for tap-to-pay and scan-to-pay, if enabled in the settings.
 * New translations into Traditional Chinese, Macedonian and Esperanto. Updated Spanish.
 * Resolved issues with wallets with many transactions.
-* Based on bitcoinj 0.11.
+* Based on rimbitj 0.11.
 
 v3.30
 
@@ -125,8 +125,8 @@ v3.26
 
 v3.25
 
-* support for mBTC denomination
-* also use weighted exchange rates from BitcoinAverage
+* support for mRBT denomination
+* also use weighted exchange rates from RimbitAverage
 * fixed issue with camera autofocus on some Samsung Galaxy devices
 
 v3.24
@@ -142,7 +142,7 @@ v3.22
 * sound effect when sending a payment
 * fixed rare issues with transactions missing or shown as unconfirmed
 * Hungarian translation
-* based on bitcoinj 0.10.2
+* based on rimbitj 0.10.2
 
 v3.21
 
@@ -167,7 +167,7 @@ v3.18
 v3.17
 
 * fixed issue with emptying wallet
-* based on bitcoinj 0.10.1
+* based on rimbitj 0.10.1
 
 v3.16
 
@@ -178,7 +178,7 @@ v3.15
 
 * auto-rotate weak keys
 * option for easy emptying wallet
-* based on bitcoinj 0.10
+* based on rimbitj 0.10
 
 v3.14
 
@@ -191,7 +191,7 @@ v3.13
 
 v3.12
 
-* direct button on main screen for scanning a Bitcoin request QR code
+* direct button on main screen for scanning a Rimbit request QR code
 * extended logging
 
 v3.11
@@ -201,12 +201,12 @@ v3.11
 v3.10
 
 * embed currency calculator into send and request coins forms
-* change default Bitcoin precision from 8 to 4
+* change default Rimbit precision from 8 to 4
 
 v3.09
 
 * calculate correct fee to ensure speedy blockchain confirmation
-* based on bitcoinj 0.9
+* based on rimbitj 0.9
 
 v3.08
 
@@ -239,7 +239,7 @@ v3.0
 * new installs are instantly fully updated and useable
 * got rid of block chain snapshot in APK, installs updates much faster
 * lots of small improvements and bugfixes
-* based on bitcoinj 0.8
+* based on rimbitj 0.8
 
 v2.49
 
@@ -257,14 +257,14 @@ v2.47
 v2.46
 
 * bugfixes
-* based on bitcoinj 0.7.3
+* based on rimbitj 0.7.3
 
 v2.45
 
 * new labs feature: block explorer
 * request coins from locally installed app
 * save memory and stack
-* based on bitcoinj 0.7.2
+* based on rimbitj 0.7.2
 
 v2.44
 
@@ -278,11 +278,11 @@ v2.42
 
 * fixed crash on Froyo (Android 2.2) devices
 * allow importing private keys from automatic backups
-* based on bitcoinj 0.7.1
+* based on rimbitj 0.7.1
 
 v2.41
 
-* labs preference for setting bitcoin value precision
+* labs preference for setting rimbit value precision
 
 v2.40
 
@@ -293,9 +293,9 @@ v2.40
 * preference for showing the connectivity indicator
 * shortcut to request coins by long tapping on qr code
 * peer monitor shows more info
-* fallback for fetching exchange rates (bitcoincharts first, then blockchain)
+* fallback for fetching exchange rates (rimbitcharts first, then blockchain)
 * lots of small improvements and bugfixes
-* based on bitcoinj 0.7
+* based on rimbitj 0.7
 
 v2.39
 
@@ -304,7 +304,7 @@ v2.39
 v2.38
 
 * fixed testnet3 blockchain sync problem
-* based on bitcoinj 0.6.1
+* based on rimbitj 0.6.1
 
 v2.37
 
@@ -355,7 +355,7 @@ v2.22
 
 * proper handling of coinbase transactions
 * watch transaction propagation (build-up of confidence) when sending coins
-* based on bitcoinj 0.6
+* based on rimbitj 0.6
 * blockchain can be reset without exiting the app
 
 v2.21
@@ -369,7 +369,7 @@ v2.20
 v2.19
 
 * bugfixes
-* based on BitCoinJ 0.5.2
+* based on RimbitJ 0.5.2
 
 v2.18
 
@@ -396,11 +396,11 @@ v2.14
 v2.13
 
 * bugfixes
-* based on BitCoinJ 0.5.1
+* based on RimbitJ 0.5.1
 
 v2.1
 
-* based on BitCoinJ 0.5.0
+* based on RimbitJ 0.5.0
 * lots of UI work
 * changes how long the P2P network stays connected
 

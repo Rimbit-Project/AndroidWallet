@@ -25,10 +25,10 @@ import javax.annotation.Nullable;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.google.bitcoin.core.InsufficientMoneyException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.SendRequest;
+import com.rimbit.rimbit.core.InsufficientMoneyException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.SendRequest;
 
 /**
  * @author Andreas Schildbach

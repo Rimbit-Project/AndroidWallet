@@ -21,8 +21,8 @@ import java.util.List;
 
 import javax.annotation.CheckForNull;
 
-import com.google.bitcoin.core.Peer;
-import com.google.bitcoin.core.StoredBlock;
+import com.rimbit.rimbit.core.Peer;
+import com.rimbit.rimbit.core.StoredBlock;
 
 /**
  * @author Andreas Schildbach

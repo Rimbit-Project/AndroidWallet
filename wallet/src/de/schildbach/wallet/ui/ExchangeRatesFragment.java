@@ -47,8 +47,8 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -248,7 +248,7 @@ public final class ExchangeRatesFragment extends SherlockListFragment implements
 	@Override
 	public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key)
 	{
-		if (Configuration.PREFS_KEY_EXCHANGE_CURRENCY.equals(key) || Configuration.PREFS_KEY_BTC_PRECISION.equals(key))
+		if (Configuration.PREFS_KEY_EXCHANGE_CURRENCY.equals(key) || Configuration.PREFS_KEY_RBT_PRECISION.equals(key))
 		{
 			defaultCurrency = config.getExchangeCurrencyCode();
 
@@ -262,9 +262,9 @@ public final class ExchangeRatesFragment extends SherlockListFragment implements
 
 		if (adapter != null)
 		{
-			final int btcShift = config.getBtcShift();
+			final int RBTShift = config.getRBTShift();
 
-			final BigInteger base = btcShift == 0 ? GenericUtils.ONE_BTC : GenericUtils.ONE_MBTC;
+			final BigInteger base = RBTShift == 0 ? GenericUtils.ONE_RBT : GenericUtils.ONE_MRBT;
 
 			adapter.setRateBase(base);
 		}
@@ -357,7 +357,7 @@ public final class ExchangeRatesFragment extends SherlockListFragment implements
 
 	private final class ExchangeRatesAdapter extends ResourceCursorAdapter
 	{
-		private BigInteger rateBase = GenericUtils.ONE_BTC;
+		private BigInteger rateBase = GenericUtils.ONE_RBT;
 
 		private ExchangeRatesAdapter(final Context context)
 		{

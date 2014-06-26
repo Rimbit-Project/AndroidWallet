@@ -31,8 +31,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.widget.RemoteViews;
 
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
 
 import de.schildbach.wallet.ui.RequestCoinsActivity;
 import de.schildbach.wallet.ui.SendCoinsActivity;
@@ -61,13 +61,13 @@ public class WalletBalanceWidgetProvider extends AppWidgetProvider
 			@Nonnull final BigInteger balance)
 	{
 		final Configuration config = new Configuration(PreferenceManager.getDefaultSharedPreferences(context));
-		final Spannable balanceStr = new SpannableString(GenericUtils.formatValue(balance, config.getBtcPrecision(), config.getBtcShift()));
+		final Spannable balanceStr = new SpannableString(GenericUtils.formatValue(balance, config.getRBTPrecision(), config.getRBTShift()));
 		WalletUtils.formatSignificant(balanceStr, WalletUtils.SMALLER_SPAN);
 
 		for (final int appWidgetId : appWidgetIds)
 		{
 			final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.wallet_balance_widget_content);
-			views.setTextViewText(R.id.widget_wallet_prefix, config.getBtcPrefix());
+			views.setTextViewText(R.id.widget_wallet_prefix, config.getRBTPrefix());
 			views.setTextViewText(R.id.widget_wallet_balance, balanceStr);
 			views.setOnClickPendingIntent(R.id.widget_button_balance,
 					PendingIntent.getActivity(context, 0, new Intent(context, WalletActivity.class), 0));

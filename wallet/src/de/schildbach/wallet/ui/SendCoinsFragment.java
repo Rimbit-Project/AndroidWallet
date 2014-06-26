@@ -25,7 +25,7 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos.Payment;
+import org.rimbit.protocols.payments.Protos.Payment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,17 +74,17 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.TransactionConfidence;
-import com.google.bitcoin.core.TransactionConfidence.ConfidenceType;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
-import com.google.bitcoin.core.Wallet.SendRequest;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.NetworkParameters;
+import com.rimbit.rimbit.core.Sha256Hash;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.TransactionConfidence;
+import com.rimbit.rimbit.core.TransactionConfidence.ConfidenceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
+import com.rimbit.rimbit.core.Wallet.SendRequest;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;
@@ -94,7 +94,7 @@ import de.schildbach.wallet.ExchangeRatesProvider.ExchangeRate;
 import de.schildbach.wallet.WalletApplication;
 import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.data.PaymentIntent.Standard;
-import de.schildbach.wallet.integration.android.BitcoinIntegration;
+import de.schildbach.wallet.integration.android.RimbitIntegration;
 import de.schildbach.wallet.offline.DirectPaymentTask;
 import de.schildbach.wallet.ui.InputParser.BinaryInputParser;
 import de.schildbach.wallet.ui.InputParser.StreamInputParser;
@@ -412,9 +412,9 @@ public final class SendCoinsFragment extends SherlockFragment
 			final String mimeType = intent.getType();
 
 			if ((Intent.ACTION_VIEW.equals(action) || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) && intentUri != null
-					&& "bitcoin".equals(scheme))
+					&& "rimbit".equals(scheme))
 			{
-				initStateFromBitcoinUri(intentUri);
+				initStateFromRimbitUri(intentUri);
 			}
 			else if ((NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) && PaymentProtocol.MIMETYPE_PAYMENTREQUEST.equals(mimeType))
 			{
@@ -424,7 +424,7 @@ public final class SendCoinsFragment extends SherlockFragment
 			}
 			else if ((Intent.ACTION_VIEW.equals(action)) && PaymentProtocol.MIMETYPE_PAYMENTREQUEST.equals(mimeType))
 			{
-				final byte[] paymentRequest = BitcoinIntegration.paymentRequestFromIntent(intent);
+				final byte[] paymentRequest = RimbitIntegration.paymentRequestFromIntent(intent);
 
 				if (intentUri != null)
 					initStateFromIntentUri(mimeType, intentUri);
@@ -483,16 +483,16 @@ public final class SendCoinsFragment extends SherlockFragment
 			}
 		});
 
-		final CurrencyAmountView btcAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_btc);
-		btcAmountView.setCurrencySymbol(config.getBtcPrefix());
-		btcAmountView.setInputPrecision(config.getBtcMaxPrecision());
-		btcAmountView.setHintPrecision(config.getBtcPrecision());
-		btcAmountView.setShift(config.getBtcShift());
+		final CurrencyAmountView RBTAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_rbt);
+		RBTAmountView.setCurrencySymbol(config.getRBTPrefix());
+		RBTAmountView.setInputPrecision(config.getRBTMaxPrecision());
+		RBTAmountView.setHintPrecision(config.getRBTPrecision());
+		RBTAmountView.setShift(config.getRBTShift());
 
 		final CurrencyAmountView localAmountView = (CurrencyAmountView) view.findViewById(R.id.send_coins_amount_local);
 		localAmountView.setInputPrecision(Constants.LOCAL_PRECISION);
 		localAmountView.setHintPrecision(Constants.LOCAL_PRECISION);
-		amountCalculatorLink = new CurrencyCalculatorLink(btcAmountView, localAmountView);
+		amountCalculatorLink = new CurrencyCalculatorLink(RBTAmountView, localAmountView);
 		amountCalculatorLink.setExchangeDirection(config.getLastExchangeDirection());
 
 		directPaymentEnableView = (CheckBox) view.findViewById(R.id.send_coins_direct_payment_enable);
@@ -870,9 +870,9 @@ public final class SendCoinsFragment extends SherlockFragment
 					log.info("returning result to calling activity: {}", callingActivity.flattenToString());
 
 					final Intent result = new Intent();
-					BitcoinIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
+					RimbitIntegration.transactionHashToResult(result, sentTransaction.getHashAsString());
 					if (paymentIntent.standard == Standard.BIP70)
-						BitcoinIntegration.paymentToResult(result, payment.toByteArray());
+						RimbitIntegration.paymentToResult(result, payment.toByteArray());
 					activity.setResult(Activity.RESULT_OK, result);
 				}
 			}
@@ -936,20 +936,20 @@ public final class SendCoinsFragment extends SherlockFragment
 				final BigInteger available = wallet.getBalance(BalanceType.AVAILABLE);
 				final BigInteger pending = estimated.subtract(available);
 
-				final int btcShift = config.getBtcShift();
-				final int btcPrecision = config.getBtcMaxPrecision();
-				final String btcPrefix = config.getBtcPrefix();
+				final int RBTShift = config.getRBTShift();
+				final int RBTPrecision = config.getRBTMaxPrecision();
+				final String RBTPrefix = config.getRBTPrefix();
 
 				final DialogBuilder dialog = DialogBuilder.warn(activity, R.string.send_coins_fragment_insufficient_money_title);
 				final StringBuilder msg = new StringBuilder();
 				if (missing != null)
 					msg.append(
 							getString(R.string.send_coins_fragment_insufficient_money_msg1,
-									btcPrefix + ' ' + GenericUtils.formatValue(missing, btcPrecision, btcShift))).append("\n\n");
+									RBTPrefix + ' ' + GenericUtils.formatValue(missing, RBTPrecision, RBTShift))).append("\n\n");
 				if (pending.signum() > 0)
 					msg.append(
 							getString(R.string.send_coins_fragment_pending,
-									btcPrefix + ' ' + GenericUtils.formatValue(pending, btcPrecision, btcShift))).append("\n\n");
+									RBTPrefix + ' ' + GenericUtils.formatValue(pending, RBTPrecision, RBTShift))).append("\n\n");
 				msg.append(getString(R.string.send_coins_fragment_insufficient_money_msg2));
 				dialog.setMessage(msg);
 				dialog.setPositiveButton(R.string.send_coins_options_empty, new DialogInterface.OnClickListener()
@@ -984,7 +984,7 @@ public final class SendCoinsFragment extends SherlockFragment
 	{
 		final BigInteger available = wallet.getBalance(BalanceType.AVAILABLE);
 
-		amountCalculatorLink.setBtcAmount(available);
+		amountCalculatorLink.setRBTAmount(available);
 
 		updateView();
 	}
@@ -1127,11 +1127,11 @@ public final class SendCoinsFragment extends SherlockFragment
 
 			if (sentTransaction != null)
 			{
-				final int btcPrecision = config.getBtcPrecision();
-				final int btcShift = config.getBtcShift();
+				final int RBTPrecision = config.getRBTPrecision();
+				final int RBTShift = config.getRBTShift();
 
 				sentTransactionView.setVisibility(View.VISIBLE);
-				sentTransactionListAdapter.setPrecision(btcPrecision, btcShift);
+				sentTransactionListAdapter.setPrecision(RBTPrecision, RBTShift);
 				sentTransactionListAdapter.replace(sentTransaction);
 			}
 			else
@@ -1206,9 +1206,9 @@ public final class SendCoinsFragment extends SherlockFragment
 		updateStateFrom(paymentIntent);
 	}
 
-	private void initStateFromBitcoinUri(@Nonnull final Uri bitcoinUri)
+	private void initStateFromRimbitUri(@Nonnull final Uri rimbitUri)
 	{
-		final String input = bitcoinUri.toString();
+		final String input = rimbitUri.toString();
 
 		new StringInputParser(input)
 		{
@@ -1256,11 +1256,11 @@ public final class SendCoinsFragment extends SherlockFragment
 		}.parse();
 	}
 
-	private void initStateFromIntentUri(@Nonnull final String mimeType, @Nonnull final Uri bitcoinUri)
+	private void initStateFromIntentUri(@Nonnull final String mimeType, @Nonnull final Uri rimbitUri)
 	{
 		try
 		{
-			final InputStream is = contentResolver.openInputStream(bitcoinUri);
+			final InputStream is = contentResolver.openInputStream(rimbitUri);
 
 			new StreamInputParser(mimeType, is)
 			{
@@ -1299,7 +1299,7 @@ public final class SendCoinsFragment extends SherlockFragment
 			{
 				if (state == State.INPUT)
 				{
-					amountCalculatorLink.setBtcAmount(paymentIntent.getAmount());
+					amountCalculatorLink.setRBTAmount(paymentIntent.getAmount());
 
 					if (paymentIntent.isBluetoothPaymentUrl())
 						directPaymentEnableView.setChecked(bluetoothAdapter != null && bluetoothAdapter.isEnabled());

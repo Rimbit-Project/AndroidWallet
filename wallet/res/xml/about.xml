@@ -24,7 +24,7 @@
 			android:title="@string/about_community_googleplus_title" />
 		<Preference
 			android:key="about_author_twitter"
-			android:summary="\@bitcoin_wallet"
+			android:summary="\@rimbit_wallet"
 			android:title="@string/about_author_twitter_title" />
 		<Preference
 			android:key="about_author_googleplus"
@@ -33,7 +33,7 @@
 		<Preference
 			android:key="about_market_publisher"
 			android:title="@string/about_credits_market_publisher_title" />
-		<Preference android:key="about_credits_bitcoinj" />
+		<Preference android:key="about_credits_rimbitj" />
 		<Preference
 			android:key="about_credits_zxing"
 			android:title="@string/about_credits_zxing_title" />

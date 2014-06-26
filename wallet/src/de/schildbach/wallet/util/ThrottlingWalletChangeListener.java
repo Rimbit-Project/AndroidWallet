@@ -24,11 +24,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import android.os.Handler;
 
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.WalletEventListener;
-import com.google.bitcoin.script.Script;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.WalletEventListener;
+import com.rimbit.rimbit.script.Script;
 
 /**
  * @author Andreas Schildbach

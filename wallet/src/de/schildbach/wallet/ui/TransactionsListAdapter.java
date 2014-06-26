@@ -39,13 +39,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Transaction.Purpose;
-import com.google.bitcoin.core.TransactionConfidence;
-import com.google.bitcoin.core.TransactionConfidence.ConfidenceType;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.wallet.DefaultCoinSelector;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Transaction.Purpose;
+import com.rimbit.rimbit.core.TransactionConfidence;
+import com.rimbit.rimbit.core.TransactionConfidence.ConfidenceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.wallet.DefaultCoinSelector;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Constants;

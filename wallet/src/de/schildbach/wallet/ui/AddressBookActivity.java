@@ -33,8 +33,8 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ECKey;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ECKey;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.ViewPagerTabs;

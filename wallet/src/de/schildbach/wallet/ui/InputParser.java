@@ -31,18 +31,18 @@ import org.slf4j.LoggerFactory;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.Base58;
-import com.google.bitcoin.core.DumpedPrivateKey;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.core.ProtocolException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.protocols.payments.PaymentRequestException;
-import com.google.bitcoin.protocols.payments.PaymentRequestException.PkiVerificationException;
-import com.google.bitcoin.uri.BitcoinURI;
-import com.google.bitcoin.uri.BitcoinURIParseException;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.Base58;
+import com.rimbit.rimbit.core.DumpedPrivateKey;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.NetworkParameters;
+import com.rimbit.rimbit.core.ProtocolException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.protocols.payments.PaymentRequestException;
+import com.rimbit.rimbit.protocols.payments.PaymentRequestException.PkiVerificationException;
+import com.rimbit.rimbit.uri.RimbitURI;
+import com.rimbit.rimbit.uri.RimbitURIParseException;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.data.PaymentIntent;
@@ -70,7 +70,7 @@ public abstract class InputParser
 		@Override
 		public void parse()
 		{
-			if (input.startsWith("BITCOIN:-"))
+			if (input.startsWith("Rimbit:-"))
 			{
 				try
 				{
@@ -97,29 +97,29 @@ public abstract class InputParser
 					error(R.string.input_parser_invalid_paymentrequest, x.getMessage());
 				}
 			}
-			else if (input.startsWith("bitcoin:"))
+			else if (input.startsWith("rimbit:"))
 			{
 				try
 				{
-					final BitcoinURI bitcoinUri = new BitcoinURI(null, input);
+					final RimbitURI rimbitUri = new RimbitURI(null, input);
 
-					final Address address = bitcoinUri.getAddress();
+					final Address address = rimbitUri.getAddress();
 					if (address == null)
-						throw new BitcoinURIParseException("missing address");
+						throw new RimbitURIParseException("missing address");
 
 					if (address.getParameters().equals(Constants.NETWORK_PARAMETERS))
-						handlePaymentIntent(PaymentIntent.fromBitcoinUri(bitcoinUri));
+						handlePaymentIntent(PaymentIntent.fromRimbitUri(rimbitUri));
 					else
 						error(R.string.input_parser_invalid_address, input);
 				}
-				catch (final BitcoinURIParseException x)
+				catch (final RimbitURIParseException x)
 				{
-					log.info("got invalid bitcoin uri: '" + input + "'", x);
+					log.info("got invalid rimbit uri: '" + input + "'", x);
 
-					error(R.string.input_parser_invalid_bitcoin_uri, input);
+					error(R.string.input_parser_invalid_rimbit_uri, input);
 				}
 			}
-			else if (PATTERN_BITCOIN_ADDRESS.matcher(input).matches())
+			else if (PATTERN_Rimbit_ADDRESS.matcher(input).matches())
 			{
 				try
 				{
@@ -365,7 +365,7 @@ public abstract class InputParser
 		dialog.show();
 	}
 
-	private static final Pattern PATTERN_BITCOIN_ADDRESS = Pattern.compile("[" + new String(Base58.ALPHABET) + "]{20,40}");
+	private static final Pattern PATTERN_Rimbit_ADDRESS = Pattern.compile("[" + new String(Base58.ALPHABET) + "]{20,40}");
 	private static final Pattern PATTERN_PRIVATE_KEY = Pattern
 			.compile((Constants.NETWORK_PARAMETERS.getId().equals(NetworkParameters.ID_MAINNET) ? "5" : "9") + "[" + new String(Base58.ALPHABET)
 					+ "]{50}");

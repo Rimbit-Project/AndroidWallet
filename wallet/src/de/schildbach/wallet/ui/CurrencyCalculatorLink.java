@@ -33,7 +33,7 @@ import de.schildbach.wallet.util.WalletUtils;
  */
 public final class CurrencyCalculatorLink
 {
-	private final CurrencyAmountView btcAmountView;
+	private final CurrencyAmountView RBTAmountView;
 	private final CurrencyAmountView localAmountView;
 
 	private Listener listener = null;
@@ -41,12 +41,12 @@ public final class CurrencyCalculatorLink
 	private ExchangeRate exchangeRate = null;
 	private boolean exchangeDirection = true;
 
-	private final CurrencyAmountView.Listener btcAmountViewListener = new CurrencyAmountView.Listener()
+	private final CurrencyAmountView.Listener RBTAmountViewListener = new CurrencyAmountView.Listener()
 	{
 		@Override
 		public void changed()
 		{
-			if (btcAmountView.getAmount() != null)
+			if (RBTAmountView.getAmount() != null)
 				setExchangeDirection(true);
 			else
 				localAmountView.setHint(null);
@@ -71,7 +71,7 @@ public final class CurrencyCalculatorLink
 			if (localAmountView.getAmount() != null)
 				setExchangeDirection(false);
 			else
-				btcAmountView.setHint(null);
+				RBTAmountView.setHint(null);
 
 			if (listener != null)
 				listener.changed();
@@ -85,10 +85,10 @@ public final class CurrencyCalculatorLink
 		}
 	};
 
-	public CurrencyCalculatorLink(@Nonnull final CurrencyAmountView btcAmountView, @Nonnull final CurrencyAmountView localAmountView)
+	public CurrencyCalculatorLink(@Nonnull final CurrencyAmountView RBTAmountView, @Nonnull final CurrencyAmountView localAmountView)
 	{
-		this.btcAmountView = btcAmountView;
-		this.btcAmountView.setListener(btcAmountViewListener);
+		this.RBTAmountView = RBTAmountView;
+		this.RBTAmountView.setListener(RBTAmountViewListener);
 
 		this.localAmountView = localAmountView;
 		this.localAmountView.setListener(localAmountViewListener);
@@ -120,12 +120,12 @@ public final class CurrencyCalculatorLink
 	{
 		if (exchangeDirection)
 		{
-			return btcAmountView.getAmount();
+			return RBTAmountView.getAmount();
 		}
 		else if (exchangeRate != null)
 		{
 			final BigInteger localAmount = localAmountView.getAmount();
-			return localAmount != null ? WalletUtils.btcValue(localAmount, exchangeRate.rate) : null;
+			return localAmount != null ? WalletUtils.RBTValue(localAmount, exchangeRate.rate) : null;
 		}
 		else
 		{
@@ -140,7 +140,7 @@ public final class CurrencyCalculatorLink
 
 	private void update()
 	{
-		btcAmountView.setEnabled(enabled);
+		RBTAmountView.setEnabled(enabled);
 
 		if (exchangeRate != null)
 		{
@@ -149,12 +149,12 @@ public final class CurrencyCalculatorLink
 
 			if (exchangeDirection)
 			{
-				final BigInteger btcAmount = btcAmountView.getAmount();
-				if (btcAmount != null)
+				final BigInteger RBTAmount = RBTAmountView.getAmount();
+				if (RBTAmount != null)
 				{
 					localAmountView.setAmount(null, false);
-					localAmountView.setHint(WalletUtils.localValue(btcAmount, exchangeRate.rate));
-					btcAmountView.setHint(null);
+					localAmountView.setHint(WalletUtils.localValue(RBTAmount, exchangeRate.rate));
+					RBTAmountView.setHint(null);
 				}
 			}
 			else
@@ -162,8 +162,8 @@ public final class CurrencyCalculatorLink
 				final BigInteger localAmount = localAmountView.getAmount();
 				if (localAmount != null)
 				{
-					btcAmountView.setAmount(null, false);
-					btcAmountView.setHint(WalletUtils.btcValue(localAmount, exchangeRate.rate));
+					RBTAmountView.setAmount(null, false);
+					RBTAmountView.setHint(WalletUtils.RBTValue(localAmount, exchangeRate.rate));
 					localAmountView.setHint(null);
 				}
 			}
@@ -172,7 +172,7 @@ public final class CurrencyCalculatorLink
 		{
 			localAmountView.setEnabled(false);
 			localAmountView.setHint(null);
-			btcAmountView.setHint(null);
+			RBTAmountView.setHint(null);
 		}
 	}
 
@@ -191,7 +191,7 @@ public final class CurrencyCalculatorLink
 	public View activeTextView()
 	{
 		if (exchangeDirection)
-			return btcAmountView.getTextView();
+			return RBTAmountView.getTextView();
 		else
 			return localAmountView.getTextView();
 	}
@@ -201,19 +201,19 @@ public final class CurrencyCalculatorLink
 		activeTextView().requestFocus();
 	}
 
-	public void setBtcAmount(@Nonnull final BigInteger amount)
+	public void setRBTAmount(@Nonnull final BigInteger amount)
 	{
 		final Listener listener = this.listener;
 		this.listener = null;
 
-		btcAmountView.setAmount(amount, true);
+		RBTAmountView.setAmount(amount, true);
 
 		this.listener = listener;
 	}
 
 	public void setNextFocusId(final int nextFocusId)
 	{
-		btcAmountView.setNextFocusId(nextFocusId);
+		RBTAmountView.setNextFocusId(nextFocusId);
 		localAmountView.setNextFocusId(nextFocusId);
 	}
 }

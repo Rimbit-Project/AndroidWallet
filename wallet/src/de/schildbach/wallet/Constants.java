@@ -24,9 +24,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.text.format.DateUtils;
 
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.params.MainNetParams;
-import com.google.bitcoin.params.TestNet3Params;
+import com.rimbit.rimbit.core.NetworkParameters;
+import com.rimbit.rimbit.params.MainNetParams;
+import com.rimbit.rimbit.params.TestNet3Params;
 
 import de.schildbach.wallet_test.R;
 
@@ -37,42 +37,40 @@ public class Constants
 {
 	public static final boolean TEST = R.class.getPackage().getName().contains("_test");
 
-	public static final NetworkParameters NETWORK_PARAMETERS = TEST ? TestNet3Params.get() : MainNetParams.get();
-	private static final String FILENAME_NETWORK_SUFFIX = NETWORK_PARAMETERS.getId().equals(NetworkParameters.ID_MAINNET) ? "" : "-testnet";
+	public static final NetworkParameters NETWORK_PARAMETERS = MainNetParams.get();
 
-	public static final String WALLET_FILENAME_PROTOBUF = "wallet-protobuf" + FILENAME_NETWORK_SUFFIX;
+	public static final String WALLET_FILENAME_PROTOBUF = "wallet-protobuf";
 
-	public static final String WALLET_KEY_BACKUP_BASE58 = "key-backup-base58" + FILENAME_NETWORK_SUFFIX;
-	public static final String WALLET_KEY_BACKUP_PROTOBUF = "key-backup-protobuf" + FILENAME_NETWORK_SUFFIX;
+	public static final String WALLET_KEY_BACKUP_BASE58 = "key-backup-base58";
+	public static final String WALLET_KEY_BACKUP_PROTOBUF = "key-backup-protobuf";
 
 	public static final File EXTERNAL_WALLET_BACKUP_DIR = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-	public static final String EXTERNAL_WALLET_KEY_BACKUP = "bitcoin-wallet-keys" + FILENAME_NETWORK_SUFFIX;
-	public static final String EXTERNAL_WALLET_BACKUP = "bitcoin-wallet-backup" + FILENAME_NETWORK_SUFFIX;
+	public static final String EXTERNAL_WALLET_KEY_BACKUP = "rimbit-wallet-keys";
+	public static final String EXTERNAL_WALLET_BACKUP = "rimbit-wallet-backup";
 
 	public static final long BACKUP_MAX_CHARS = 5000000;
 
-	public static final String BLOCKCHAIN_FILENAME = "blockchain" + FILENAME_NETWORK_SUFFIX;
+	public static final String BLOCKCHAIN_FILENAME = "blockchain";
 
-	public static final String CHECKPOINTS_FILENAME = "checkpoints" + FILENAME_NETWORK_SUFFIX;
+	public static final String CHECKPOINTS_FILENAME = "checkpoints";
 
 	private static final String EXPLORE_BASE_URL_PROD = "https://www.biteasy.com/";
 	private static final String EXPLORE_BASE_URL_TEST = "https://www.biteasy.com/testnet/";
-	public static final String EXPLORE_BASE_URL = NETWORK_PARAMETERS.getId().equals(NetworkParameters.ID_MAINNET) ? EXPLORE_BASE_URL_PROD
-			: EXPLORE_BASE_URL_TEST;
+	public static final String EXPLORE_BASE_URL = "DUNNO?";
 
-	public static final String MIMETYPE_TRANSACTION = "application/x-btctx";
-	public static final String MIMETYPE_WALLET_BACKUP = "application/x-bitcoin-wallet-backup";
+	public static final String MIMETYPE_TRANSACTION = "application/x-rbttx";
+	public static final String MIMETYPE_WALLET_BACKUP = "application/x-rimbit-wallet-backup";
 
 	public static final int MAX_NUM_CONFIRMATIONS = 7;
-	public static final String USER_AGENT = "Bitcoin Wallet";
+	public static final String USER_AGENT = "Rimbit Wallet";
 	public static final String DEFAULT_EXCHANGE_CURRENCY = "USD";
 	public static final int WALLET_OPERATION_STACK_SIZE = 256 * 1024;
 	public static final long BLOCKCHAIN_STATE_BROADCAST_THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
 	public static final long BLOCKCHAIN_UPTODATE_THRESHOLD_MS = DateUtils.HOUR_IN_MILLIS;
 
-	public static final String CURRENCY_CODE_BTC = "BTC";
-	public static final String CURRENCY_CODE_MBTC = "mBTC";
-	public static final String CURRENCY_CODE_UBTC = "µBTC";
+	public static final String CURRENCY_CODE_RBT = "RBT";
+	public static final String CURRENCY_CODE_MRBT = "mRBT";
+	public static final String CURRENCY_CODE_URBT = "µRBT";
 	public static final char CHAR_HAIR_SPACE = '\u200a';
 	public static final char CHAR_THIN_SPACE = '\u2009';
 	public static final char CHAR_ALMOST_EQUAL_TO = '\u2248';
@@ -83,23 +81,23 @@ public class Constants
 	public static final int ADDRESS_FORMAT_GROUP_SIZE = 4;
 	public static final int ADDRESS_FORMAT_LINE_SIZE = 12;
 
-	public static final int BTC_MAX_PRECISION = 8;
-	public static final int MBTC_MAX_PRECISION = 5;
-	public static final int UBTC_MAX_PRECISION = 2;
+	public static final int RBT_MAX_PRECISION = 6;
+	public static final int MRBT_MAX_PRECISION = 3;
+	public static final int URBT_MAX_PRECISION = 0;
 	public static final int LOCAL_PRECISION = 4;
 
-	public static final String DONATION_ADDRESS = "18CK5k1gajRKKSC7yVSTXT9LUzbheh1XY4";
-	public static final String REPORT_EMAIL = "wallet@schildbach.de";
+	public static final String DONATION_ADDRESS = "RCsdo2SmRzg8ScGzgqyGxBXRTNY6qZ7nK4";
+	public static final String REPORT_EMAIL = "support@rimbit.com";
 	public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
 	public static final String REPORT_SUBJECT_CRASH = "Crash report";
 
 	public static final String LICENSE_URL = "http://www.gnu.org/licenses/gpl-3.0.txt";
-	public static final String SOURCE_URL = "https://github.com/schildbach/bitcoin-wallet";
-	public static final String BINARY_URL = "https://github.com/schildbach/bitcoin-wallet/releases";
-	public static final String CREDITS_BITCOINJ_URL = "http://code.google.com/p/bitcoinj/";
+	public static final String SOURCE_URL = "https://github.com/schildbach/rimbit-wallet";
+	public static final String BINARY_URL = "https://github.com/schildbach/rimbit-wallet/releases";
+	public static final String CREDITS_RimbitJ_URL = "http://code.google.com/p/rimbitj/";
 	public static final String CREDITS_ZXING_URL = "https://github.com/zxing/zxing";
-	public static final String CREDITS_ICON_URL = "https://bitcointalk.org/index.php?action=profile;u=2062";
-	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/bitcoin_wallet";
+	public static final String CREDITS_ICON_URL = "https://rimbittalk.org/index.php?action=profile;u=2062";
+	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/rimbit_wallet";
 	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/andreas.schildbach";
 	public static final String COMMUNITY_GOOGLEPLUS_URL = "https://plus.google.com/communities/105515929887248493912";
 	public static final String MARKET_APP_URL = "market://details?id=%s";

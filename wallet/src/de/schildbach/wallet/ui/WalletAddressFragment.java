@@ -33,8 +33,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.uri.BitcoinURI;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.uri.RimbitURI;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -55,9 +55,9 @@ public final class WalletAddressFragment extends Fragment
 	private Configuration config;
 	private NfcManager nfcManager;
 
-	private View bitcoinAddressButton;
-	private TextView bitcoinAddressLabel;
-	private ImageView bitcoinAddressQrView;
+	private View rimbitAddressButton;
+	private TextView rimbitAddressLabel;
+	private ImageView rimbitAddressQrView;
 
 	private Address lastSelectedAddress;
 
@@ -78,11 +78,11 @@ public final class WalletAddressFragment extends Fragment
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState)
 	{
 		final View view = inflater.inflate(R.layout.wallet_address_fragment, container, false);
-		bitcoinAddressButton = view.findViewById(R.id.bitcoin_address_button);
-		bitcoinAddressLabel = (TextView) view.findViewById(R.id.bitcoin_address_label);
-		bitcoinAddressQrView = (ImageView) view.findViewById(R.id.bitcoin_address_qr);
+		rimbitAddressButton = view.findViewById(R.id.rimbit_address_button);
+		rimbitAddressLabel = (TextView) view.findViewById(R.id.rimbit_address_label);
+		rimbitAddressQrView = (ImageView) view.findViewById(R.id.rimbit_address_qr);
 
-		bitcoinAddressButton.setOnClickListener(new OnClickListener()
+		rimbitAddressButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(final View v)
@@ -91,7 +91,7 @@ public final class WalletAddressFragment extends Fragment
 			}
 		});
 
-		bitcoinAddressQrView.setOnClickListener(new OnClickListener()
+		rimbitAddressQrView.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(final View v)
@@ -131,14 +131,14 @@ public final class WalletAddressFragment extends Fragment
 		{
 			lastSelectedAddress = selectedAddress;
 
-			bitcoinAddressLabel.setText(WalletUtils.formatAddress(selectedAddress, Constants.ADDRESS_FORMAT_GROUP_SIZE,
+			rimbitAddressLabel.setText(WalletUtils.formatAddress(selectedAddress, Constants.ADDRESS_FORMAT_GROUP_SIZE,
 					Constants.ADDRESS_FORMAT_LINE_SIZE));
 
-			final String addressStr = BitcoinURI.convertToBitcoinURI(selectedAddress, null, null, null);
+			final String addressStr = RimbitURI.convertToRimbitURI(selectedAddress, null, null, null);
 
 			final int size = (int) (256 * getResources().getDisplayMetrics().density);
 			qrCodeBitmap = Qr.bitmap(addressStr, size);
-			bitcoinAddressQrView.setImageBitmap(qrCodeBitmap);
+			rimbitAddressQrView.setImageBitmap(qrCodeBitmap);
 
 			Nfc.publishUri(nfcManager, getActivity(), addressStr);
 		}

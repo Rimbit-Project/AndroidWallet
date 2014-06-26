@@ -59,28 +59,28 @@ import android.os.PowerManager.WakeLock;
 import android.support.v4.app.NotificationCompat;
 import android.text.format.DateUtils;
 
-import com.google.bitcoin.core.AbstractPeerEventListener;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.Block;
-import com.google.bitcoin.core.BlockChain;
-import com.google.bitcoin.core.CheckpointManager;
-import com.google.bitcoin.core.Peer;
-import com.google.bitcoin.core.PeerEventListener;
-import com.google.bitcoin.core.PeerGroup;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.StoredBlock;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.TransactionConfidence.ConfidenceType;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
-import com.google.bitcoin.core.WalletEventListener;
-import com.google.bitcoin.net.discovery.DnsDiscovery;
-import com.google.bitcoin.net.discovery.PeerDiscovery;
-import com.google.bitcoin.net.discovery.PeerDiscoveryException;
-import com.google.bitcoin.store.BlockStore;
-import com.google.bitcoin.store.BlockStoreException;
-import com.google.bitcoin.store.SPVBlockStore;
-import com.google.bitcoin.utils.Threading;
+import com.rimbit.rimbit.core.AbstractPeerEventListener;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.Block;
+import com.rimbit.rimbit.core.BlockChain;
+import com.rimbit.rimbit.core.CheckpointManager;
+import com.rimbit.rimbit.core.Peer;
+import com.rimbit.rimbit.core.PeerEventListener;
+import com.rimbit.rimbit.core.PeerGroup;
+import com.rimbit.rimbit.core.Sha256Hash;
+import com.rimbit.rimbit.core.StoredBlock;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.TransactionConfidence.ConfidenceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
+import com.rimbit.rimbit.core.WalletEventListener;
+import com.rimbit.rimbit.net.discovery.DnsDiscovery;
+import com.rimbit.rimbit.net.discovery.PeerDiscovery;
+import com.rimbit.rimbit.net.discovery.PeerDiscoveryException;
+import com.rimbit.rimbit.store.BlockStore;
+import com.rimbit.rimbit.store.BlockStoreException;
+import com.rimbit.rimbit.store.SPVBlockStore;
+import com.rimbit.rimbit.utils.Threading;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;
@@ -184,19 +184,19 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
 		if (from != null && !notificationAddresses.contains(from))
 			notificationAddresses.add(from);
 
-		final int btcPrecision = config.getBtcPrecision();
-		final int btcShift = config.getBtcShift();
-		final String btcPrefix = config.getBtcPrefix();
+		final int RBTPrecision = config.getRBTPrecision();
+		final int RBTShift = config.getRBTShift();
+		final String RBTPrefix = config.getRBTPrefix();
 
 		final String packageFlavor = application.applicationPackageFlavor();
 		final String msgSuffix = packageFlavor != null ? " [" + packageFlavor + "]" : "";
 
 		final String tickerMsg = getString(R.string.notification_coins_received_msg,
-				btcPrefix + ' ' + GenericUtils.formatValue(amount, btcPrecision, btcShift))
+				RBTPrefix + ' ' + GenericUtils.formatValue(amount, RBTPrecision, RBTShift))
 				+ msgSuffix;
 
 		final String msg = getString(R.string.notification_coins_received_msg,
-				btcPrefix + ' ' + GenericUtils.formatValue(notificationAccumulatedAmount, btcPrecision, btcShift))
+				RBTPrefix + ' ' + GenericUtils.formatValue(notificationAccumulatedAmount, RBTPrecision, RBTShift))
 				+ msgSuffix;
 
 		final StringBuilder text = new StringBuilder();

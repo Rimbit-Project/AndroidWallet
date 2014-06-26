@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnull;
 
-import org.bitcoinj.wallet.Protos;
+import org.rimbitj.wallet.Protos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,15 +52,15 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.rolling.RollingFileAppender;
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.VersionMessage;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.store.UnreadableWalletException;
-import com.google.bitcoin.store.WalletProtobufSerializer;
-import com.google.bitcoin.utils.Threading;
-import com.google.bitcoin.wallet.WalletFiles;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.VersionMessage;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.store.UnreadableWalletException;
+import com.rimbit.rimbit.store.WalletProtobufSerializer;
+import com.rimbit.rimbit.utils.Threading;
+import com.rimbit.rimbit.wallet.WalletFiles;
 
 import de.schildbach.wallet.service.BlockchainService;
 import de.schildbach.wallet.service.BlockchainServiceImpl;
@@ -111,7 +111,7 @@ public class WalletApplication extends Application
 			@Override
 			public void uncaughtException(final Thread thread, final Throwable throwable)
 			{
-				log.info("bitcoinj uncaught exception", throwable);
+				log.info("rimbitj uncaught exception", throwable);
 				CrashReporter.saveBackgroundTrace(throwable, packageInfo);
 			}
 		};

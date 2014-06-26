@@ -92,7 +92,7 @@ public class Nfc
 	{
 		final byte[] uriBytes = uri.getBytes(Constants.UTF_8);
 		final byte[] recordBytes = new byte[uriBytes.length + 1];
-		recordBytes[0] = (byte) 0x0; // prefix, alway 0 for bitcoin scheme
+		recordBytes[0] = (byte) 0x0; // prefix, alway 0 for rimbit scheme
 		System.arraycopy(uriBytes, 0, recordBytes, 1, uriBytes.length);
 		return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_URI, new byte[0], recordBytes);
 	}

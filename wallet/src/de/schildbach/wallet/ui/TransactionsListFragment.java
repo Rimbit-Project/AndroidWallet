@@ -62,13 +62,13 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ScriptException;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Transaction.Purpose;
-import com.google.bitcoin.core.TransactionConfidence.ConfidenceType;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.utils.Threading;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ScriptException;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Transaction.Purpose;
+import com.rimbit.rimbit.core.TransactionConfidence.ConfidenceType;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.utils.Threading;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;
@@ -108,7 +108,7 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 
 	private static final String KEY_DIRECTION = "direction";
 	private static final long THROTTLE_MS = DateUtils.SECOND_IN_MILLIS;
-	private static final Uri KEY_ROTATION_URI = Uri.parse("http://bitcoin.org/en/alert/2013-08-11-android");
+	private static final Uri KEY_ROTATION_URI = Uri.parse("http://rimbit.org/en/alert/2013-08-11-android");
 
 	private static final Logger log = LoggerFactory.getLogger(TransactionsListFragment.class);
 
@@ -273,7 +273,7 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 
 					menu.findItem(R.id.wallet_transactions_context_edit_address).setVisible(address != null);
 
-					serializedTx = tx.unsafeBitcoinSerialize();
+					serializedTx = tx.unsafeRimbitSerialize();
 
 					menu.findItem(R.id.wallet_transactions_context_show_qr).setVisible(serializedTx.length < SHOW_QR_THRESHOLD_BYTES);
 
@@ -470,16 +470,16 @@ public class TransactionsListFragment extends SherlockListFragment implements Lo
 	@Override
 	public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key)
 	{
-		if (Configuration.PREFS_KEY_BTC_PRECISION.equals(key))
+		if (Configuration.PREFS_KEY_RBT_PRECISION.equals(key))
 			updateView();
 	}
 
 	private void updateView()
 	{
-		final int btcPrecision = config.getBtcPrecision();
-		final int btcShift = config.getBtcShift();
+		final int RBTPrecision = config.getRBTPrecision();
+		final int RBTShift = config.getRBTShift();
 
-		adapter.setPrecision(btcPrecision, btcShift);
+		adapter.setPrecision(RBTPrecision, RBTShift);
 		adapter.clearLabelCache();
 	}
 }

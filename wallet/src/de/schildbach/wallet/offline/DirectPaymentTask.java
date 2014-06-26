@@ -29,8 +29,8 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoin.protocols.payments.Protos.Payment;
+import org.rimbit.protocols.payments.Protos;
+import org.rimbit.protocols.payments.Protos.Payment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

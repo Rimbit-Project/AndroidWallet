@@ -23,7 +23,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.bitcoin.core.Transaction;
+import com.rimbit.rimbit.core.Transaction;
 
 import de.schildbach.wallet.data.PaymentIntent;
 import de.schildbach.wallet.ui.InputParser.StringInputParser;

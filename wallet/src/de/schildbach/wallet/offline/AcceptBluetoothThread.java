@@ -25,8 +25,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.annotation.Nonnull;
 
-import org.bitcoin.protocols.payments.Protos;
-import org.bitcoin.protocols.payments.Protos.PaymentACK;
+import org.rimbit.protocols.payments.Protos;
+import org.rimbit.protocols.payments.Protos.PaymentACK;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,8 +34,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 
-import com.google.bitcoin.core.ProtocolException;
-import com.google.bitcoin.core.Transaction;
+import com.rimbit.rimbit.core.ProtocolException;
+import com.rimbit.rimbit.core.Transaction;
 
 import de.schildbach.wallet.Constants;
 import de.schildbach.wallet.util.Bluetooth;
@@ -264,7 +264,7 @@ public abstract class AcceptBluetoothThread extends Thread
 	{
 		try
 		{
-			return adapter.listenUsingInsecureRfcommWithServiceRecord("Bitcoin Transaction Submission", uuid);
+			return adapter.listenUsingInsecureRfcommWithServiceRecord("Rimbit Transaction Submission", uuid);
 		}
 		catch (final IOException x)
 		{

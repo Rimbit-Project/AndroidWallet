@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
 import javax.annotation.Nonnull;
 
 /**
- * Base43, derived from bitcoinj Base58
+ * Base43, derived from rimbitj Base58
  * 
  * @author Andreas Schildbach
  */

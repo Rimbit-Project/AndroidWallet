@@ -154,7 +154,7 @@
 	<string name="scan_camera_problem_dialog_message">בעיה במצלמה, אנא אחתל מחדש את המכשיר שלך.</string>
 	<string name="input_parser_io_error">לא יכול לקרוא מידע:\n%s</string>
 	<string name="input_parser_cannot_classify">לא יכול לסווג את הקלט:\n%s</string>
-	<string name="input_parser_invalid_bitcoin_uri">כתובת ביטקוין לא חוקית:\n%s</string>
+	<string name="input_parser_invalid_rimbit_uri">כתובת ביטקוין לא חוקית:\n%s</string>
 	<string name="input_parser_invalid_address">כתובת ביטקוין לא חוקית</string>
 	<string name="input_parser_unverifyable_paymentrequest">לא יכול לאמת בקשת תשלום:\n%s</string>
 	<string name="input_parser_invalid_paymentrequest">בקשת תשלום לא חוקית:\n%s</string>
@@ -193,7 +193,7 @@
 	<string name="report_issue_dialog_mail_intent_failed">שליחת דו\"ח נכשלה.</string>
 	<string name="about_title">על אודות</string>
 	<string name="about_license_title">רישיון</string>
-	<string name="about_credits_bitcoinj_title">אפליקציה זו משתמשת בbitcoinj %s</string>
+	<string name="about_credits_rimbitj_title">אפליקציה זו משתמשת בrimbitj %s</string>
 	<string name="about_credits_zxing_title">אפליקציה זו משתמש ב\'zxing\'</string>
 	<string name="about_credits_icon_title">אפליקציה זו משתמשת בסמליל של \'bitboy\'</string>
 	<string name="about_community_googleplus_title">קהילת גוגל+</string>

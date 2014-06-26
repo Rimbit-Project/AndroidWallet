@@ -23,10 +23,10 @@ import javax.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.AddressFormatException;
-import com.google.bitcoin.core.NetworkParameters;
-import com.google.bitcoin.core.WrongNetworkException;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.AddressFormatException;
+import com.rimbit.rimbit.core.NetworkParameters;
+import com.rimbit.rimbit.core.WrongNetworkException;
 
 /**
  * @author Andreas Schildbach

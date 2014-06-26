@@ -8,7 +8,7 @@ storage:
 	Testnet: /data/data/de.schildbach.wallet_test/files/wallet-protobuf-testnet (MODE_WORLD_READABLE | MODE_WORLD_WRITEABLE)
 
 The wallet file format is not compatible to wallet.dat (Satoshi client). Rather, it uses a custom protobuf format
-which should be compatible between clients using bitcoinj.
+which should be compatible between clients using rimbitj.
 
 Certain actions cause automatic rolling backups of your wallet to app-private storage:
 
@@ -18,9 +18,9 @@ Certain actions cause automatic rolling backups of your wallet to app-private st
 
 Your wallet can be manually backed up to and restored from external storage:
 
-	Mainnet: /sdcard/Download/bitcoin-wallet-backup-<yyyy-MM-dd>
+	Mainnet: /sdcard/Download/rimbit-wallet-backup-<yyyy-MM-dd>
 
-	Testnet: /sdcard/Download/bitcoin-wallet-backup-testnet-<yyyy-MM-dd>
+	Testnet: /sdcard/Download/rimbit-wallet-backup-testnet-<yyyy-MM-dd>
 
 The manual backup files are encrypted using your chosen backup password. You can use OpenSSL to decrypt:
 
@@ -68,14 +68,14 @@ and unpack it to your workspace directory. Switch to that Android SDK directory,
 
 to download the necessary API level.
 
-Finally, you can build Bitcoin Wallet and sign it with your development key. Again in your workspace,
+Finally, you can build Rimbit Wallet and sign it with your development key. Again in your workspace,
 use
 
 	# first time only
-	git clone -b master https://github.com/schildbach/bitcoin-wallet.git bitcoin-wallet
+	git clone -b master https://github.com/schildbach/rimbit-wallet.git rimbit-wallet
 
 	# each time
-	cd bitcoin-wallet
+	cd rimbit-wallet
 	git pull
 	mvn clean install -Dandroid.sdk.path=<path to your android sdk>
 
@@ -99,7 +99,7 @@ wallet file is protected against access from non-root users. In the code reposit
 separate 'prod' branch that gets rebased against master with each released version.
 
 	# each time
-	cd bitcoin-wallet
+	cd rimbit-wallet
 	git fetch origin
 	git checkout origin/prod
 	mvn clean install -Prelease -Dandroid.sdk.path=<path to your android sdk>
@@ -111,8 +111,8 @@ Make sure you've got Eclipse 3.7 (Indigo) with ADT 20 installed.
 
 Use Git to check out the project and an Android library dependency to your workspace:
 
-	# clone Bitcoin Wallet project
-	git clone -b master https://github.com/schildbach/bitcoin-wallet.git bitcoin-wallet
+	# clone Rimbit Wallet project
+	git clone -b master https://github.com/schildbach/rimbit-wallet.git rimbit-wallet
 
 	# clone ActionBarSherlock library project
 	git clone https://github.com/JakeWharton/ActionBarSherlock.git action-bar-sherlock
@@ -121,7 +121,7 @@ Use Git to check out the project and an Android library dependency to your works
 
 Use the maven-eclipse-plugin to create Eclipse project files:
 
-	cd bitcoin-wallet
+	cd rimbit-wallet
 	mvn eclipse:eclipse
 
 Optional: In the generated .classpath, remove the org.eclipse.jdt.launching.JRE_CONTAINER
@@ -135,7 +135,7 @@ Java Compiler -> Errors/Warnings -> Annotations -> Missing @Override annotation 
 
 NFC (Near field communication)
 
-Bitcoin Wallet supports reading Bitcoin requests via NFC, either from a passive NFC tag or from
+Rimbit Wallet supports reading Rimbit requests via NFC, either from a passive NFC tag or from
 another NFC capable Android device that is requesting coins.
 
 For this to work, just enable NFC in your phone and hold your phone to the tag or device (with
@@ -149,31 +149,31 @@ Instructions for preparing an NFC tag with your address:
 
 - Some tags have less than 50 bytes capacity, those won't work. 1 KB tags recommended.
 
-- The tag needs to contain a Bitcoin URI. You can construct one with the "Request coins" dialog,
+- The tag needs to contain a Rimbit URI. You can construct one with the "Request coins" dialog,
   then share with messaging or email. You can also construct the URI manually. Example for Mainnet:
-  bitcoin:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL
+  rimbit:1G2Y2jP5YFZ5RGk2PXaeWwbeA5y1ZtFhoL
 
 - The type of the message needs to be URI or URL (not Text).
 
 - If you put your tag at a public place, don't forget to enable write protect. Otherwise, someone
-  could overwrite the tag with his own Bitcoin address.
+  could overwrite the tag with his own Rimbit address.
 
 
 EXCHANGE RATES
 
-Bitcoin Wallet reads this feed from "bitcoin charts" for getting exchange rates:
+Rimbit Wallet reads this feed from "rimbit charts" for getting exchange rates:
 
-	http://bitcoincharts.com/t/weighted_prices.json
+	http://rimbitcharts.com/t/weighted_prices.json
 
 The feed is described on this page (see Weighted Prices):
 
-	http://bitcoincharts.com/about/markets-api/
+	http://rimbitcharts.com/about/markets-api/
 
 I chose this feed because it is not dependent on a single exchange. However, you should keep in
 mind it's always a 24h average (falling back to 7d or even 30d if no trade occurred for a long
 time).
 
-If Bitcoincharts is not available, the feed from "Blockchain" is fetched instead:
+If Rimbitcharts is not available, the feed from "Blockchain" is fetched instead:
 
 	https://blockchain.info/ticker
 
@@ -182,8 +182,8 @@ The feed is described here:
 	https://blockchain.info/api/exchange_rates_api
 
 
-BITCOINJ
+RimbitJ
 
-Bitcoin Wallet uses bitcoinj for Bitcoin specific logic:
+Rimbit Wallet uses rimbitj for Rimbit specific logic:
 
-http://code.google.com/p/bitcoinj/
+http://code.google.com/p/rimbitj/

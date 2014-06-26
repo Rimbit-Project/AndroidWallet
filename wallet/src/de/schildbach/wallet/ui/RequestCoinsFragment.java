@@ -53,9 +53,9 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.uri.BitcoinURI;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.uri.RimbitURI;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -162,16 +162,16 @@ public final class RequestCoinsFragment extends SherlockFragment
 			}
 		});
 
-		final CurrencyAmountView btcAmountView = (CurrencyAmountView) view.findViewById(R.id.request_coins_amount_btc);
-		btcAmountView.setCurrencySymbol(config.getBtcPrefix());
-		btcAmountView.setInputPrecision(config.getBtcMaxPrecision());
-		btcAmountView.setHintPrecision(config.getBtcPrecision());
-		btcAmountView.setShift(config.getBtcShift());
+		final CurrencyAmountView RBTAmountView = (CurrencyAmountView) view.findViewById(R.id.request_coins_amount_rbt);
+		RBTAmountView.setCurrencySymbol(config.getRBTPrefix());
+		RBTAmountView.setInputPrecision(config.getRBTMaxPrecision());
+		RBTAmountView.setHintPrecision(config.getRBTPrecision());
+		RBTAmountView.setShift(config.getRBTShift());
 
 		final CurrencyAmountView localAmountView = (CurrencyAmountView) view.findViewById(R.id.request_coins_amount_local);
 		localAmountView.setInputPrecision(Constants.LOCAL_PRECISION);
 		localAmountView.setHintPrecision(Constants.LOCAL_PRECISION);
-		amountCalculatorLink = new CurrencyCalculatorLink(btcAmountView, localAmountView);
+		amountCalculatorLink = new CurrencyCalculatorLink(RBTAmountView, localAmountView);
 
 		acceptBluetoothPaymentView = (CheckBox) view.findViewById(R.id.request_coins_accept_bluetooth_payment);
 		acceptBluetoothPaymentView.setVisibility(ENABLE_BLUETOOTH_LISTENING && bluetoothAdapter != null ? View.VISIBLE : View.GONE);
@@ -331,7 +331,7 @@ public final class RequestCoinsFragment extends SherlockFragment
 
 	private void handleCopy()
 	{
-		final String request = determineBitcoinRequestStr(false);
+		final String request = determineRimbitRequestStr(false);
 		clipboardManager.setText(request);
 		activity.toast(R.string.request_coins_clipboard_msg);
 	}
@@ -340,13 +340,13 @@ public final class RequestCoinsFragment extends SherlockFragment
 	{
 		final Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("text/plain");
-		intent.putExtra(Intent.EXTRA_TEXT, determineBitcoinRequestStr(false));
+		intent.putExtra(Intent.EXTRA_TEXT, determineRimbitRequestStr(false));
 		startActivity(Intent.createChooser(intent, getString(R.string.request_coins_share_dialog_title)));
 	}
 
 	private void handleLocalApp()
 	{
-		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(determineBitcoinRequestStr(false)));
+		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(determineRimbitRequestStr(false)));
 		startActivity(intent);
 		activity.finish();
 	}
@@ -356,16 +356,16 @@ public final class RequestCoinsFragment extends SherlockFragment
 		if (!isResumed())
 			return;
 
-		final String bitcoinRequest = determineBitcoinRequestStr(true);
+		final String rimbitRequest = determineRimbitRequestStr(true);
 		final byte[] paymentRequest = determinePaymentRequest(true);
 
 		// update qr-code
 		final int size = (int) (256 * getResources().getDisplayMetrics().density);
 		final String qrContent;
 		if (config.getQrPaymentRequestEnabled())
-			qrContent = "BITCOIN:-" + Qr.encodeBinary(paymentRequest);
+			qrContent = "Rimbit:-" + Qr.encodeBinary(paymentRequest);
 		else
-			qrContent = bitcoinRequest;
+			qrContent = rimbitRequest;
 		qrCodeBitmap = Qr.bitmap(qrContent, size);
 		qrView.setImageBitmap(qrCodeBitmap);
 
@@ -383,12 +383,12 @@ public final class RequestCoinsFragment extends SherlockFragment
 		acceptBluetoothPaymentView.setNextFocusUpId(activeAmountViewId);
 	}
 
-	private String determineBitcoinRequestStr(final boolean includeBluetoothMac)
+	private String determineRimbitRequestStr(final boolean includeBluetoothMac)
 	{
 		final Address address = application.determineSelectedAddress();
 		final BigInteger amount = amountCalculatorLink.getAmount();
 
-		final StringBuilder uri = new StringBuilder(BitcoinURI.convertToBitcoinURI(address, amount, null, null));
+		final StringBuilder uri = new StringBuilder(RimbitURI.convertToRimbitURI(address, amount, null, null));
 		if (includeBluetoothMac && bluetoothMac != null)
 		{
 			uri.append(amount == null ? '?' : '&');

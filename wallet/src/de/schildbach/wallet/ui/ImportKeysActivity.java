@@ -38,10 +38,10 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.Wallet.BalanceType;
-import com.google.bitcoin.store.UnreadableWalletException;
-import com.google.bitcoin.store.WalletProtobufSerializer;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.Wallet.BalanceType;
+import com.rimbit.rimbit.store.UnreadableWalletException;
+import com.rimbit.rimbit.store.WalletProtobufSerializer;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;

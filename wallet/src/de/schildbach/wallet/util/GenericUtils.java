@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.bitcoin.core.NetworkParameters;
+import com.rimbit.rimbit.core.NetworkParameters;
 
 import de.schildbach.wallet.Constants;
 
@@ -37,13 +37,13 @@ import de.schildbach.wallet.Constants;
  */
 public class GenericUtils
 {
-	public static final BigInteger ONE_BTC = new BigInteger("100000000", 10);
-	public static final BigInteger ONE_MBTC = new BigInteger("100000", 10);
-	public static final BigInteger ONE_UBTC = new BigInteger("100", 10);
+	public static final BigInteger ONE_RBT = new BigInteger("100000000", 10);
+	public static final BigInteger ONE_MRBT = new BigInteger("100000", 10);
+	public static final BigInteger ONE_URBT = new BigInteger("100", 10);
 
-	private static final int ONE_BTC_INT = ONE_BTC.intValue();
-	private static final int ONE_MBTC_INT = ONE_MBTC.intValue();
-	private static final int ONE_UBTC_INT = ONE_UBTC.intValue();
+	private static final int ONE_RBT_INT = ONE_RBT.intValue();
+	private static final int ONE_MRBT_INT = ONE_MRBT.intValue();
+	private static final int ONE_URBT_INT = ONE_URBT.intValue();
 
 	public static String formatValue(@Nonnull final BigInteger value, final int precision, final int shift)
 	{
@@ -71,8 +71,8 @@ public class GenericUtils
 				throw new IllegalArgumentException("cannot handle precision/shift: " + precision + "/" + shift);
 
 			final long absValue = Math.abs(longValue);
-			final long coins = absValue / ONE_BTC_INT;
-			final int satoshis = (int) (absValue % ONE_BTC_INT);
+			final long coins = absValue / ONE_RBT_INT;
+			final int satoshis = (int) (absValue % ONE_RBT_INT);
 
 			if (satoshis % 1000000 == 0)
 				return String.format(Locale.US, "%s%d.%02d", sign, coins, satoshis / 1000000);
@@ -95,8 +95,8 @@ public class GenericUtils
 				throw new IllegalArgumentException("cannot handle precision/shift: " + precision + "/" + shift);
 
 			final long absValue = Math.abs(longValue);
-			final long coins = absValue / ONE_MBTC_INT;
-			final int satoshis = (int) (absValue % ONE_MBTC_INT);
+			final long coins = absValue / ONE_MRBT_INT;
+			final int satoshis = (int) (absValue % ONE_MRBT_INT);
 
 			if (satoshis % 1000 == 0)
 				return String.format(Locale.US, "%s%d.%02d", sign, coins, satoshis / 1000);
@@ -115,8 +115,8 @@ public class GenericUtils
 				throw new IllegalArgumentException("cannot handle precision/shift: " + precision + "/" + shift);
 
 			final long absValue = Math.abs(longValue);
-			final long coins = absValue / ONE_UBTC_INT;
-			final int satoshis = (int) (absValue % ONE_UBTC_INT);
+			final long coins = absValue / ONE_URBT_INT;
+			final int satoshis = (int) (absValue % ONE_URBT_INT);
 
 			if (satoshis % 100 == 0)
 				return String.format(Locale.US, "%s%d", sign, coins);
@@ -131,7 +131,7 @@ public class GenericUtils
 
 	public static String formatDebugValue(@Nonnull final BigInteger value)
 	{
-		return formatValue(value, Constants.BTC_MAX_PRECISION, 0);
+		return formatValue(value, Constants.RBT_MAX_PRECISION, 0);
 	}
 
 	public static BigInteger parseCoin(final String str, final int shift) throws ArithmeticException

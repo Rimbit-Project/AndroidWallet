@@ -56,11 +56,11 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.Block;
-import com.google.bitcoin.core.Sha256Hash;
-import com.google.bitcoin.core.StoredBlock;
-import com.google.bitcoin.core.Transaction;
-import com.google.bitcoin.core.Wallet;
+import com.rimbit.rimbit.core.Block;
+import com.rimbit.rimbit.core.Sha256Hash;
+import com.rimbit.rimbit.core.StoredBlock;
+import com.rimbit.rimbit.core.Transaction;
+import com.rimbit.rimbit.core.Wallet;
 
 import de.schildbach.wallet.Configuration;
 import de.schildbach.wallet.Constants;
@@ -304,10 +304,10 @@ public final class BlockListFragment extends SherlockListFragment
 
 			if (transactions != null)
 			{
-				final int btcPrecision = config.getBtcPrecision();
-				final int btcShift = config.getBtcShift();
+				final int RBTPrecision = config.getRBTPrecision();
+				final int RBTShift = config.getRBTShift();
 
-				transactionsAdapter.setPrecision(btcPrecision, btcShift);
+				transactionsAdapter.setPrecision(RBTPrecision, RBTShift);
 
 				for (final Transaction tx : transactions)
 				{

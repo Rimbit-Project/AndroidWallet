@@ -43,13 +43,13 @@ import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.bitcoin.core.AbstractWalletEventListener;
-import com.google.bitcoin.core.Address;
-import com.google.bitcoin.core.ECKey;
-import com.google.bitcoin.core.Wallet;
-import com.google.bitcoin.core.WalletEventListener;
-import com.google.bitcoin.uri.BitcoinURI;
-import com.google.bitcoin.utils.Threading;
+import com.rimbit.rimbit.core.AbstractWalletEventListener;
+import com.rimbit.rimbit.core.Address;
+import com.rimbit.rimbit.core.ECKey;
+import com.rimbit.rimbit.core.Wallet;
+import com.rimbit.rimbit.core.WalletEventListener;
+import com.rimbit.rimbit.uri.RimbitURI;
+import com.rimbit.rimbit.utils.Threading;
 
 import de.schildbach.wallet.AddressBookProvider;
 import de.schildbach.wallet.Configuration;
@@ -251,7 +251,7 @@ public final class WalletAddressesFragment extends SherlockListFragment
 
 			private void handleShowQr(@Nonnull final Address address)
 			{
-				final String uri = BitcoinURI.convertToBitcoinURI(address, null, null, null);
+				final String uri = RimbitURI.convertToRimbitURI(address, null, null, null);
 				final int size = (int) (256 * getResources().getDisplayMetrics().density);
 				BitmapFragment.show(getFragmentManager(), Qr.bitmap(uri, size));
 			}
