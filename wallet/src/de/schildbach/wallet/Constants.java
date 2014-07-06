@@ -26,7 +26,6 @@ import android.text.format.DateUtils;
 
 import com.rimbit.rimbit.core.NetworkParameters;
 import com.rimbit.rimbit.params.MainNetParams;
-import com.rimbit.rimbit.params.TestNet3Params;
 
 import de.schildbach.wallet_test.R;
 
@@ -51,12 +50,9 @@ public class Constants
 	public static final long BACKUP_MAX_CHARS = 5000000;
 
 	public static final String BLOCKCHAIN_FILENAME = "blockchain";
-
 	public static final String CHECKPOINTS_FILENAME = "checkpoints";
 
-	private static final String EXPLORE_BASE_URL_PROD = "https://www.biteasy.com/";
-	private static final String EXPLORE_BASE_URL_TEST = "https://www.biteasy.com/testnet/";
-	public static final String EXPLORE_BASE_URL = "DUNNO?";
+	public static final String EXPLORE_BASE_URL = "https://www.rimbitexplorer.com/";
 
 	public static final String MIMETYPE_TRANSACTION = "application/x-rbttx";
 	public static final String MIMETYPE_WALLET_BACKUP = "application/x-rimbit-wallet-backup";
@@ -92,17 +88,15 @@ public class Constants
 	public static final String REPORT_SUBJECT_CRASH = "Crash report";
 
 	public static final String LICENSE_URL = "http://www.gnu.org/licenses/gpl-3.0.txt";
-	public static final String SOURCE_URL = "https://github.com/schildbach/rimbit-wallet";
-	public static final String BINARY_URL = "https://github.com/schildbach/rimbit-wallet/releases";
-	public static final String CREDITS_RimbitJ_URL = "http://code.google.com/p/rimbitj/";
+	public static final String SOURCE_URL = "https://github.com/Rimbit/AndroidWallet";
+	public static final String BINARY_URL = "https://github.com/Rimbit/AndroidWallet/releases";
+	public static final String CREDITS_RimbitJ_URL = "https://github.com/Rimbit/rimbitj/";
 	public static final String CREDITS_ZXING_URL = "https://github.com/zxing/zxing";
-	public static final String CREDITS_ICON_URL = "https://rimbittalk.org/index.php?action=profile;u=2062";
-	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/rimbit_wallet";
-	public static final String AUTHOR_GOOGLEPLUS_URL = "https://profiles.google.com/andreas.schildbach";
-	public static final String COMMUNITY_GOOGLEPLUS_URL = "https://plus.google.com/communities/105515929887248493912";
+	public static final String AUTHOR_TWITTER_URL = "https://twitter.com/#!/RimbitCom";
+	public static final String AUTHOR_GOOGLEPLUS_URL = "https://plus.google.com/114536489886133372917";
 	public static final String MARKET_APP_URL = "market://details?id=%s";
 	public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
-	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Andreas Schildbach\"";
+	public static final String MARKET_PUBLISHER_URL = "market://search?q=pub:\"Rimbit\"";
 
 	public static final String VERSION_URL = "http://wallet.schildbach.de/version";
 	public static final int HTTP_TIMEOUT_MS = 15 * (int) DateUtils.SECOND_IN_MILLIS;

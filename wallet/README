@@ -72,7 +72,7 @@ Finally, you can build Rimbit Wallet and sign it with your development key. Agai
 use
 
 	# first time only
-	git clone -b master https://github.com/schildbach/rimbit-wallet.git rimbit-wallet
+	git clone -b master https://github.com/Rimbit/AndroidWallet.git rimbit-wallet
 
 	# each time
 	cd rimbit-wallet
@@ -112,7 +112,7 @@ Make sure you've got Eclipse 3.7 (Indigo) with ADT 20 installed.
 Use Git to check out the project and an Android library dependency to your workspace:
 
 	# clone Rimbit Wallet project
-	git clone -b master https://github.com/schildbach/rimbit-wallet.git rimbit-wallet
+	git clone -b master https://github.com/Rimbit/AndroidWallet.git rimbit-wallet
 
 	# clone ActionBarSherlock library project
 	git clone https://github.com/JakeWharton/ActionBarSherlock.git action-bar-sherlock
@@ -186,4 +186,4 @@ RimbitJ
 
 Rimbit Wallet uses rimbitj for Rimbit specific logic:
 
-http://code.google.com/p/rimbitj/
+https://github.com/Rimbit/rimbitj

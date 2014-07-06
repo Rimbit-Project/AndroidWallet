@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>3.50-test</version>
+	<version>1.0-test</version>
 	<name>Rimbit Wallet</name>
 
 	<parent>
@@ -56,7 +56,7 @@
 			<version>0.11.3</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/../../rimbitj/core/target/rimbitj-0.11.3.jar</systemPath>
-		</dependency>
+		</dependency> 
 
 		<!-- de.schildbach.wallet.integration.android.* -->
 		<dependency>

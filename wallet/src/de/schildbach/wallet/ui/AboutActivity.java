@@ -41,13 +41,11 @@ public final class AboutActivity extends SherlockPreferenceActivity
 	private static final String KEY_ABOUT_LICENSE = "about_license";
 	private static final String KEY_ABOUT_SOURCE = "about_source";
 	private static final String KEY_ABOUT_MARKET_APP = "about_market_app";
-	private static final String KEY_ABOUT_COMMUNITY_GOOGLEPLUS = "about_community_googleplus";
 	private static final String KEY_ABOUT_AUTHOR_TWITTER = "about_author_twitter";
 	private static final String KEY_ABOUT_AUTHOR_GOOGLEPLUS = "about_author_googleplus";
 	private static final String KEY_ABOUT_MARKET_PUBLISHER = "about_market_publisher";
 	private static final String KEY_ABOUT_CREDITS_RimbitJ = "about_credits_rimbitj";
 	private static final String KEY_ABOUT_CREDITS_ZXING = "about_credits_zxing";
-	private static final String KEY_ABOUT_CREDITS_ICON = "about_credits_icon";
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState)
@@ -66,7 +64,6 @@ public final class AboutActivity extends SherlockPreferenceActivity
 		findPreference(KEY_ABOUT_CREDITS_RimbitJ).setTitle(getString(R.string.about_credits_rimbitj_title, VersionMessage.RimbitJ_VERSION));
 		findPreference(KEY_ABOUT_CREDITS_RimbitJ).setSummary(Constants.CREDITS_RimbitJ_URL);
 		findPreference(KEY_ABOUT_CREDITS_ZXING).setSummary(Constants.CREDITS_ZXING_URL);
-		findPreference(KEY_ABOUT_CREDITS_ICON).setSummary(Constants.CREDITS_ICON_URL);
 	}
 
 	@Override
@@ -105,11 +102,6 @@ public final class AboutActivity extends SherlockPreferenceActivity
 				startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(String.format(Constants.WEBMARKET_APP_URL, getPackageName()))));
 			finish();
 		}
-		else if (KEY_ABOUT_COMMUNITY_GOOGLEPLUS.equals(key))
-		{
-			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.COMMUNITY_GOOGLEPLUS_URL)));
-			finish();
-		}
 		else if (KEY_ABOUT_AUTHOR_TWITTER.equals(key))
 		{
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.AUTHOR_TWITTER_URL)));
@@ -133,11 +125,6 @@ public final class AboutActivity extends SherlockPreferenceActivity
 		else if (KEY_ABOUT_CREDITS_ZXING.equals(key))
 		{
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CREDITS_ZXING_URL)));
-			finish();
-		}
-		else if (KEY_ABOUT_CREDITS_ICON.equals(key))
-		{
-			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.CREDITS_ICON_URL)));
 			finish();
 		}
 
