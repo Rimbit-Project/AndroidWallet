@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	package="de.schildbach.wallet_test"
+	package="com.rimbit.android_wallet"
 	android:installLocation="internalOnly"
-	android:versionCode="171"
-	android:versionName="3.50-test" >
+	android:versionCode="2"
+	android:versionName="1.1" >
 
 	<uses-sdk
 		android:minSdkVersion="10"
-		android:targetSdkVersion="11"
+		android:targetSdkVersion="16"
 		tools:ignore="OldTargetApi" />
 
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -55,21 +55,20 @@
 		android:xlargeScreens="true" />
 
 	<application
-		android:name="de.schildbach.wallet.WalletApplication"
+		android:name="com.rimbit.android_wallet.WalletApplication"
 		android:allowBackup="false"
 		android:hardwareAccelerated="true"
 		android:icon="@drawable/app_icon"
 		android:label="@string/app_name"
-		android:theme="@style/My.Theme" 
-		android:debuggable="true">
+		android:theme="@style/My.Theme">
 		<activity
-			android:name="de.schildbach.wallet.ui.WalletActivity"
+			android:name="com.rimbit.android_wallet.ui.WalletActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:launchMode="singleTask" />
 
 		<activity-alias
-			android:name="de.schildbach.wallet.WalletActivity"
-			android:targetActivity="de.schildbach.wallet.ui.WalletActivity" >
+			android:name="com.rimbit.android_wallet.WalletActivity"
+			android:targetActivity="com.rimbit.android_wallet.ui.WalletActivity" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
@@ -85,7 +84,7 @@
 		</activity-alias>
 
 		<activity
-			android:name="de.schildbach.wallet.ui.SendCoinsActivity"
+			android:name="com.rimbit.android_wallet.ui.SendCoinsActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/send_coins_activity_title"
 			android:screenOrientation="behind"
@@ -121,41 +120,41 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="de.schildbach.wallet.ui.SendCoinsQrActivity"
+			android:name="com.rimbit.android_wallet.ui.SendCoinsQrActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar" >
 		</activity>
 		<activity
-			android:name="de.schildbach.wallet.ui.RequestCoinsActivity"
+			android:name="com.rimbit.android_wallet.ui.RequestCoinsActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/request_coins_activity_title"
 			android:screenOrientation="behind"
 			android:windowSoftInputMode="adjustResize" />
 		<activity
-			android:name="de.schildbach.wallet.ui.AddressBookActivity"
+			android:name="com.rimbit.android_wallet.ui.AddressBookActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/address_book_activity_title"
 			android:screenOrientation="behind" />
 		<activity
-			android:name="de.schildbach.wallet.ui.ExchangeRatesActivity"
+			android:name="com.rimbit.android_wallet.ui.ExchangeRatesActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/exchange_rates_activity_title"
 			android:screenOrientation="behind" />
 		<activity
-			android:name="de.schildbach.wallet.ui.NetworkMonitorActivity"
+			android:name="com.rimbit.android_wallet.ui.NetworkMonitorActivity"
 			android:configChanges="keyboard|keyboardHidden"
 			android:label="@string/network_monitor_activity_title"
 			android:screenOrientation="behind" />
 		<activity
-			android:name="de.schildbach.wallet.ui.PreferencesActivity"
+			android:name="com.rimbit.android_wallet.ui.PreferencesActivity"
 			android:label="@string/preferences_activity_title"
 			android:screenOrientation="behind" />
 		<activity
-			android:name="de.schildbach.wallet.ui.AboutActivity"
+			android:name="com.rimbit.android_wallet.ui.AboutActivity"
 			android:label="@string/about_title"
 			android:screenOrientation="behind" />
 		<activity
-			android:name="de.schildbach.wallet.ui.ImportKeysActivity"
+			android:name="com.rimbit.android_wallet.ui.ImportKeysActivity"
 			android:configChanges="orientation|keyboard|keyboardHidden"
 			android:theme="@style/My.Theme.Dialog" >
 			<intent-filter android:label="@string/import_keys_intent_filter_action" >
@@ -168,7 +167,7 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="de.schildbach.wallet.ui.ScanActivity"
+			android:name="com.rimbit.android_wallet.ui.ScanActivity"
 			android:configChanges="orientation|keyboard|keyboardHidden"
 			android:screenOrientation="landscape"
 			android:stateNotNeeded="true"
@@ -176,16 +175,16 @@
 			android:windowSoftInputMode="stateAlwaysHidden" />
 
 		<provider
-			android:name="de.schildbach.wallet.AddressBookProvider"
-			android:authorities="de.schildbach.wallet_test.address_book"
+			android:name="com.rimbit.android_wallet.AddressBookProvider"
+			android:authorities="com.rimbit.android_wallet.address_book"
 			android:exported="false" />
 		<provider
-			android:name="de.schildbach.wallet.ExchangeRatesProvider"
-			android:authorities="de.schildbach.wallet_test.exchange_rates"
+			android:name="com.rimbit.android_wallet.ExchangeRatesProvider"
+			android:authorities="com.rimbit.android_wallet.exchange_rates"
 			android:exported="false" />
 
 		<receiver
-			android:name="de.schildbach.wallet.WalletBalanceWidgetProvider"
+			android:name="com.rimbit.android_wallet.WalletBalanceWidgetProvider"
 			android:label="Rimbit Wallet Balance" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -197,13 +196,13 @@
 		</receiver>
 
 		<service
-			android:name="de.schildbach.wallet.service.BlockchainServiceImpl"
+			android:name="com.rimbit.android_wallet.service.BlockchainServiceImpl"
 			android:exported="false" />
 		<service
-			android:name="de.schildbach.wallet.offline.AcceptBluetoothService"
+			android:name="com.rimbit.android_wallet.offline.AcceptBluetoothService"
 			android:exported="false" />
 
-		<receiver android:name="de.schildbach.wallet.service.AutosyncReceiver" >
+		<receiver android:name="com.rimbit.android_wallet.service.AutosyncReceiver" >
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>

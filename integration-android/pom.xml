@@ -9,7 +9,7 @@
 	<name>Rimbit Integration for Android</name>
 
 	<parent>
-		<groupId>de.schildbach.wallet</groupId>
+		<groupId>com.rimbit.android_wallet</groupId>
 		<artifactId>base</artifactId>
 		<version>1</version>
 	</parent>

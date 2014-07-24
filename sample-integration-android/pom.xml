@@ -23,6 +23,14 @@
 		</license>
 	</licenses>
 
+	<repositories>
+	  <repository>
+	    <id>local</id>
+	    <url>file://${project.basedir}/../../rimbitj/core/target/</url>
+	  </repository>
+	</repositories>
+
+
 	<dependencies>
 
 		<!-- android.*, java.*, javax.* -->
@@ -45,8 +53,6 @@
 			<groupId>com.rimbit</groupId>
 			<artifactId>rimbitj</artifactId>
 			<version>0.11.3</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/../../rimbitj/core/target/rimbitj-0.11.3.jar</systemPath>
 		</dependency>
 
 		<dependency>
