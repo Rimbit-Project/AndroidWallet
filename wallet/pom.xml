@@ -6,7 +6,7 @@
 
 	<artifactId>wallet</artifactId>
 	<packaging>apk</packaging>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>Rimbit Wallet</name>
 
 	<parent>
@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>com.rimbit</groupId>
 			<artifactId>rimbitj</artifactId>
-			<version>0.11.3</version>
+			<version>0.11.4</version>
 		</dependency> 
 
 		<!-- com.rimbit.android_wallet.integration.android.* -->
